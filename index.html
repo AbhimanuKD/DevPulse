@@ -105,14 +105,6 @@
         box-shadow: 0 0 16px rgba(96, 165, 250, 0.6);
       }
 
-      .calculator-btn {
-        transition: all 0.2s ease;
-      }
-
-      .calculator-btn:hover {
-        transform: translateY(-1px);
-      }
-
       .grid-pattern {
         background-image:
           linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
@@ -318,42 +310,42 @@
             <div class="mb-5 flex items-center justify-between">
               <div>
                 <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Tool</p>
-                <h3 class="mt-2 text-2xl font-bold text-white">Calculator</h3>
+                <h3 class="mt-2 text-2xl font-bold text-white">Focus Planner</h3>
               </div>
               <div class="rounded-full border border-cyan-400/20 bg-cyan-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">
-                Instant
+                Smart
               </div>
             </div>
 
             <div class="rounded-2xl border border-slate-700 bg-slate-950/80 p-4">
-              <div id="calculator-display" class="min-h-[72px] overflow-hidden break-all bg-slate-900/80 px-4 py-3 text-right text-3xl font-bold text-white rounded-xl border border-slate-700">
-                0
+              <div class="flex items-center justify-between gap-3">
+                <div>
+                  <div class="text-xs uppercase tracking-[0.18em] text-slate-400">Current mode</div>
+                  <div id="modeLabel" class="mt-2 text-2xl font-black text-white">Deep Work</div>
+                </div>
+                <div class="rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-violet-200">
+                  <span id="focusValue">72%</span>
+                </div>
               </div>
 
-              <div class="mt-4 grid grid-cols-4 gap-3">
-                <button class="calculator-btn operator rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-4 text-xl font-bold text-cyan-300 hover:border-cyan-400/40" data-action="clear">C</button>
-                <button class="calculator-btn operator rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-4 text-xl font-bold text-cyan-300 hover:border-cyan-400/40" data-action="delete">⌫</button>
-                <button class="calculator-btn operator rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-4 text-xl font-bold text-cyan-300 hover:border-cyan-400/40" data-action="percent">%</button>
-                <button class="calculator-btn operator rounded-xl border border-violet-400/30 bg-gradient-to-r from-violet-500/20 to-cyan-500/20 px-4 py-4 text-xl font-bold text-violet-200 hover:border-violet-300" data-action="operator" data-value="/">÷</button>
+              <div class="mt-6">
+                <div class="mb-2 flex items-center justify-between text-sm text-slate-300">
+                  <span>Focus intensity</span>
+                  <span id="focusDisplay">72%</span>
+                </div>
+                <input id="focusSlider" type="range" min="10" max="100" value="72" class="w-full accent-cyan-400" />
+              </div>
 
-                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="7">7</button>
-                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="8">8</button>
-                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="9">9</button>
-                <button class="calculator-btn operator rounded-xl border border-violet-400/30 bg-gradient-to-r from-violet-500/20 to-cyan-500/20 px-4 py-4 text-xl font-bold text-violet-200 hover:border-violet-300" data-action="operator" data-value="*">×</button>
+              <div class="mt-6 grid grid-cols-2 gap-3">
+                <button class="planner-btn rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-3 text-left text-sm font-semibold text-slate-200 hover:border-cyan-400/40" data-mode="Deep Work">Deep Work</button>
+                <button class="planner-btn rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-3 text-left text-sm font-semibold text-slate-200 hover:border-cyan-400/40" data-mode="Build Sprint">Build Sprint</button>
+                <button class="planner-btn rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-3 text-left text-sm font-semibold text-slate-200 hover:border-cyan-400/40" data-mode="Code Review">Code Review</button>
+                <button class="planner-btn rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-3 text-left text-sm font-semibold text-slate-200 hover:border-cyan-400/40" data-mode="Bug Hunt">Bug Hunt</button>
+              </div>
 
-                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="4">4</button>
-                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="5">5</button>
-                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="6">6</button>
-                <button class="calculator-btn operator rounded-xl border border-violet-400/30 bg-gradient-to-r from-violet-500/20 to-cyan-500/20 px-4 py-4 text-xl font-bold text-violet-200 hover:border-violet-300" data-action="operator" data-value="-">−</button>
-
-                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="1">1</button>
-                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="2">2</button>
-                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="3">3</button>
-                <button class="calculator-btn operator rounded-xl border border-violet-400/30 bg-gradient-to-r from-violet-500/20 to-cyan-500/20 px-4 py-4 text-xl font-bold text-violet-200 hover:border-violet-300" data-action="operator" data-value="+">+</button>
-
-                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40 col-span-2" data-value="0">0</button>
-                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value=".">.</button>
-                <button class="calculator-btn equals rounded-xl border border-cyan-400/30 bg-gradient-to-r from-cyan-400 to-blue-500 px-4 py-4 text-xl font-black text-slate-950 hover:shadow-neon" data-action="equals">=</button>
+              <div class="mt-6 rounded-2xl border border-cyan-400/20 bg-cyan-500/10 p-4">
+                <div class="text-xs uppercase tracking-[0.18em] text-cyan-200">Suggested output</div>
+                <div id="outputSummary" class="mt-2 text-lg font-bold text-white">3 feature modules • 1 automation flow • 90 min focus block</div>
               </div>
             </div>
           </div>
@@ -491,168 +483,56 @@
     </footer>
 
     <script>
-      const display = document.getElementById("calculator-display");
-      let currentInput = "0";
-      let storedValue = null;
-      let operator = null;
-      let waitingForNewValue = false;
+      const focusSlider = document.getElementById("focusSlider");
+      const focusDisplay = document.getElementById("focusDisplay");
+      const focusValue = document.getElementById("focusValue");
+      const modeLabel = document.getElementById("modeLabel");
+      const outputSummary = document.getElementById("outputSummary");
+      const plannerButtons = document.querySelectorAll(".planner-btn");
 
-      function updateDisplay() {
-        display.textContent = currentInput;
-      }
+      let activeMode = "Deep Work";
 
-      function inputNumber(value) {
-        if (waitingForNewValue) {
-          currentInput = value;
-          waitingForNewValue = false;
+      function updatePlanner() {
+        const intensity = Number(focusSlider.value);
+        focusDisplay.textContent = `${intensity}%`;
+        focusValue.textContent = `${intensity}%`;
+
+        const modules = Math.max(1, Math.round(intensity / 24));
+        const automation = Math.max(1, Math.round((100 - intensity) / 18));
+        const minutes = Math.max(45, Math.round(intensity * 1.2));
+
+        outputSummary.textContent = `${modules} feature modules • ${automation} automation flow • ${minutes} min focus block`;
+
+        if (intensity >= 80) {
+          modeLabel.textContent = activeMode === "Bug Hunt" ? "Bug Hunt" : "Deep Work";
+        } else if (intensity >= 60) {
+          modeLabel.textContent = activeMode === "Build Sprint" ? "Build Sprint" : "Focus Mode";
+        } else if (intensity >= 35) {
+          modeLabel.textContent = activeMode === "Code Review" ? "Code Review" : "Iteration";
         } else {
-          currentInput = currentInput === "0" ? value : currentInput + value;
-        }
-        updateDisplay();
-      }
-
-      function inputDecimal() {
-        if (waitingForNewValue) {
-          currentInput = "0.";
-          waitingForNewValue = false;
-          updateDisplay();
-          return;
-        }
-
-        if (!currentInput.includes(".")) {
-          currentInput += ".";
-          updateDisplay();
+          modeLabel.textContent = activeMode === "Deep Work" ? "Deep Work" : "Warmup";
         }
       }
 
-      function performCalculation() {
-        const inputValue = parseFloat(currentInput);
-
-        if (storedValue === null || operator === null) return;
-
-        switch (operator) {
-          case "+":
-            storedValue += inputValue;
-            break;
-          case "-":
-            storedValue -= inputValue;
-            break;
-          case "*":
-            storedValue *= inputValue;
-            break;
-          case "/":
-            storedValue /= inputValue;
-            break;
-          default:
-            return;
-        }
-
-        currentInput = String(storedValue);
-        operator = null;
-        storedValue = null;
-        waitingForNewValue = true;
-        updateDisplay();
-      }
-
-      function handleOperator(nextOperator) {
-        const inputValue = parseFloat(currentInput);
-
-        if (storedValue === null) {
-          storedValue = inputValue;
-        } else if (operator) {
-          performCalculation();
-          storedValue = parseFloat(currentInput);
-        }
-
-        operator = nextOperator;
-        waitingForNewValue = true;
-        currentInput = String(storedValue);
-        updateDisplay();
-      }
-
-      function clearCalculator() {
-        currentInput = "0";
-        storedValue = null;
-        operator = null;
-        waitingForNewValue = false;
-        updateDisplay();
-      }
-
-      function deleteLast() {
-        if (waitingForNewValue) return;
-        currentInput = currentInput.length > 1 ? currentInput.slice(0, -1) : "0";
-        updateDisplay();
-      }
-
-      function percentValue() {
-        const value = parseFloat(currentInput);
-        currentInput = String(value / 100);
-        updateDisplay();
-      }
-
-      document.querySelectorAll(".number").forEach((button) => {
+      plannerButtons.forEach((button) => {
         button.addEventListener("click", () => {
-          const value = button.dataset.value;
-          if (value === ".") {
-            inputDecimal();
-          } else {
-            inputNumber(value);
-          }
+          activeMode = button.dataset.mode;
+          modeLabel.textContent = activeMode;
+
+          const presetMap = {
+            "Deep Work": 82,
+            "Build Sprint": 74,
+            "Code Review": 56,
+            "Bug Hunt": 68,
+          };
+
+          focusSlider.value = presetMap[activeMode] || 72;
+          updatePlanner();
         });
       });
 
-      document.querySelectorAll(".operator").forEach((button) => {
-        button.addEventListener("click", () => {
-          const action = button.dataset.action;
-          const value = button.dataset.value;
-
-          if (action === "clear") {
-            clearCalculator();
-            return;
-          }
-
-          if (action === "delete") {
-            deleteLast();
-            return;
-          }
-
-          if (action === "percent") {
-            percentValue();
-            return;
-          }
-
-          if (action === "operator") {
-            handleOperator(value);
-          }
-        });
-      });
-
-      document.querySelector('[data-action="equals"]').addEventListener("click", () => {
-        if (storedValue !== null && operator !== null) {
-          performCalculation();
-        }
-      });
-
-      document.addEventListener("keydown", (event) => {
-        const { key } = event;
-
-        if (/^[0-9]$/.test(key)) {
-          inputNumber(key);
-        } else if (key === ".") {
-          inputDecimal();
-        } else if (["+", "-", "*", "/"].includes(key)) {
-          handleOperator(key);
-        } else if (key === "Enter" || key === "=") {
-          event.preventDefault();
-          if (storedValue !== null && operator !== null) {
-            performCalculation();
-          }
-        } else if (key === "Backspace") {
-          deleteLast();
-        } else if (key === "Escape") {
-          clearCalculator();
-        }
-      });
+      focusSlider.addEventListener("input", updatePlanner);
+      updatePlanner();
 
       const stats = [
         { key: "cpu", value: 72, bar: document.getElementById("cpuBar"), label: document.getElementById("cpuValue") },
