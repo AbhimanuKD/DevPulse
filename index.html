@@ -175,6 +175,465 @@
         background: rgba(15, 23, 42, 0.75);
       }
 
+      .os-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: none;
+        background: rgba(2, 6, 23, 0.8);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+
+      .os-overlay.show {
+        display: block;
+      }
+
+      .os-desktop {
+        position: relative;
+        width: min(92vw, 1280px);
+        height: min(86vh, 820px);
+        margin: 7vh auto;
+        border-radius: 28px;
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        background: linear-gradient(135deg, rgba(3, 7, 18, 0.98), rgba(15, 23, 42, 0.98));
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.65);
+        overflow: hidden;
+      }
+
+      .os-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 18px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+        background: rgba(15, 23, 42, 0.9);
+      }
+
+      .os-window-controls {
+        display: flex;
+        gap: 8px;
+      }
+
+      .os-window-controls span {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
+      }
+
+      .os-title {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: rgba(148, 163, 184, 0.9);
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .os-main {
+        display: grid;
+        grid-template-columns: 90px 1fr;
+        height: calc(100% - 52px);
+      }
+
+      .os-sidebar {
+        padding: 18px 12px;
+        border-right: 1px solid rgba(148, 163, 184, 0.12);
+        background: rgba(15, 23, 42, 0.72);
+      }
+
+      .dock-app {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+        color: #cbd5e1;
+        font-size: 10px;
+        letter-spacing: 0.08em;
+        opacity: 0.9;
+      }
+
+      .dock-app.is-active {
+        color: #67e8f9;
+      }
+
+      .dock-icon {
+        width: 46px;
+        height: 46px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: 800;
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        background: linear-gradient(135deg, rgba(52, 211, 153, 0.22), rgba(34, 211, 238, 0.22));
+      }
+
+      .desktop-surface {
+        position: relative;
+        padding: 22px;
+        overflow: hidden;
+      }
+
+      .desktop-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 18px;
+        align-content: start;
+      }
+
+      .app-tile {
+        padding: 12px 10px;
+        border-radius: 18px;
+        border: 1px solid rgba(148, 163, 184, 0.14);
+        background: rgba(15, 23, 42, 0.42);
+        text-align: center;
+        color: #e2e8f0;
+        cursor: pointer;
+        transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      }
+
+      .app-tile:hover {
+        transform: translateY(-2px);
+        border-color: rgba(103, 232, 249, 0.35);
+        background: rgba(15, 23, 42, 0.68);
+      }
+
+      .tile-icon {
+        width: 54px;
+        height: 54px;
+        border-radius: 16px;
+        margin: 0 auto 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 800;
+        border: 1px solid rgba(148, 163, 184, 0.14);
+      }
+
+      .tile-name {
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: rgba(226, 232, 240, 0.9);
+      }
+
+      .desktop-window {
+        position: absolute;
+        inset: 18px 18px 70px 18px;
+        border-radius: 22px;
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        background: rgba(15, 23, 42, 0.92);
+        box-shadow: 0 30px 40px rgba(2, 6, 23, 0.45);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .window-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+        background: rgba(15, 23, 42, 0.8);
+      }
+
+      .window-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .window-dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+      }
+
+      .window-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: rgba(148, 163, 184, 0.85);
+      }
+
+      .window-actions {
+        display: flex;
+        gap: 8px;
+      }
+
+      .window-actions button {
+        border: 1px solid rgba(148, 163, 184, 0.16);
+        background: rgba(15, 23, 42, 0.7);
+        color: #dbeafe;
+        border-radius: 10px;
+        padding: 4px 10px;
+        font-size: 11px;
+      }
+
+      .browser-ui {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        background: rgba(2, 6, 23, 0.96);
+      }
+
+      .browser-toolbar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 14px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+        background: rgba(10, 18, 30, 0.9);
+      }
+
+      .browser-nav {
+        display: flex;
+        gap: 8px;
+      }
+
+      .browser-nav button {
+        width: 30px;
+        height: 30px;
+        border-radius: 10px;
+        border: 1px solid rgba(148, 163, 184, 0.12);
+        background: rgba(15, 23, 42, 0.8);
+        color: #dbeafe;
+        font-weight: 700;
+      }
+
+      .browser-url {
+        flex: 1;
+        border-radius: 12px;
+        padding: 8px 12px;
+        font-size: 12px;
+        color: #dbeafe;
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.12);
+      }
+
+      .browser-content {
+        flex: 1;
+        background: linear-gradient(180deg, rgba(2, 6, 23, 0.98), rgba(9, 16, 28, 0.98));
+        overflow: auto;
+      }
+
+      .mini-site {
+        padding: 28px 24px 18px;
+        color: #e2e8f0;
+      }
+
+      .mini-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 18px;
+      }
+
+      .mini-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+      }
+
+      .mini-brand-mark {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, rgba(52, 211, 153, 0.9), rgba(34, 211, 238, 0.9));
+        color: #020817;
+        font-weight: 900;
+      }
+
+      .mini-nav {
+        display: flex;
+        gap: 12px;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(148, 163, 184, 0.9);
+      }
+
+      .mini-hero {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 18px;
+        align-items: center;
+        margin-bottom: 22px;
+      }
+
+      .mini-pill {
+        display: inline-block;
+        border-radius: 999px;
+        border: 1px solid rgba(103, 232, 249, 0.3);
+        background: rgba(34, 211, 238, 0.1);
+        color: #b6f6ff;
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 7px 12px;
+      }
+
+      .mini-title {
+        margin-top: 12px;
+        font-size: clamp(20px, 3vw, 42px);
+        line-height: 1.05;
+        font-weight: 900;
+      }
+
+      .mini-title .grad {
+        background: linear-gradient(90deg, #67e8f9 0%, #4ade80 35%, #38bdf8 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .mini-sub {
+        margin-top: 12px;
+        color: rgba(203, 213, 225, 0.9);
+        line-height: 1.8;
+        font-size: 13px;
+      }
+
+      .mini-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .mini-btn {
+        border-radius: 999px;
+        padding: 10px 18px;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .mini-btn.primary {
+        background: linear-gradient(90deg, #4ade80, #22d3ee);
+        color: #020817;
+      }
+
+      .mini-btn.secondary {
+        border: 1px solid rgba(148, 163, 184, 0.2);
+        color: #e2e8f0;
+        background: rgba(15, 23, 42, 0.9);
+      }
+
+      .mini-metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .mini-metric {
+        border-radius: 14px;
+        padding: 12px;
+        border: 1px solid rgba(148, 163, 184, 0.12);
+        background: rgba(15, 23, 42, 0.72);
+      }
+
+      .mini-metric strong {
+        display: block;
+        font-size: 18px;
+      }
+
+      .mini-wire {
+        border: 1px solid rgba(103, 232, 249, 0.18);
+        background: linear-gradient(180deg, rgba(8, 17, 30, 0.96), rgba(2, 6, 23, 0.96));
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: inset 0 0 16px rgba(34, 211, 238, 0.06);
+      }
+
+      .mini-wire-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 14px;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+      }
+
+      .mini-wire-body {
+        padding: 16px;
+      }
+
+      .bars {
+        display: grid;
+        gap: 12px;
+      }
+
+      .bar {
+        height: 10px;
+        border-radius: 999px;
+        overflow: hidden;
+        background: rgba(51, 65, 85, 0.7);
+      }
+
+      .bar > span {
+        display: block;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #4ade80, #22d3ee, #38bdf8);
+      }
+
+      .mini-cards {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .mini-card {
+        border-radius: 16px;
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(148, 163, 184, 0.12);
+        padding: 12px;
+      }
+
+      .taskbar {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 18px;
+        border-top: 1px solid rgba(148, 163, 184, 0.12);
+        background: rgba(2, 6, 23, 0.82);
+      }
+
+      .taskbar-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 999px;
+        border: 1px solid rgba(103, 232, 249, 0.22);
+        background: rgba(34, 211, 238, 0.1);
+        padding: 8px 12px;
+        color: #dffcff;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .system-clock {
+        font-size: 12px;
+        color: rgba(226, 232, 240, 0.88);
+      }
+
       @media (prefers-reduced-motion: reduce) {
         html {
           scroll-behavior: auto;
@@ -261,12 +720,13 @@
             >
               View GitHub
             </a>
-            <a
-              href="#tools"
-              class="inline-flex items-center rounded-full border border-slate-700 bg-slate-900/60 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/50 hover:text-cyan-200"
+            <button
+              type="button"
+              data-open-os
+              class="focus-ring inline-flex items-center rounded-full border border-slate-700 bg-slate-900/60 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/50 hover:text-cyan-200"
             >
-              Explore Demo Tools
-            </a>
+              Open DevPulse OS
+            </button>
           </div>
 
           <div class="mt-10 flex flex-wrap gap-7 text-sm text-slate-300">
@@ -716,14 +1176,13 @@
                 I translate complex workflows into elegant AI-powered tools that feel effortless for users.
               </div>
 
-              <a
-                href="https://www.instagram.com/abhimanu_011/"
-                target="_blank"
-                rel="noreferrer"
-                class="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-400 to-cyan-500 px-5 py-3 text-base font-bold text-slate-950 transition hover:scale-[1.01]"
+              <button
+                type="button"
+                data-open-os
+                class="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-400 to-cyan-500 px-5 py-3 text-base font-bold text-slate-950 transition hover:scale-[1.01] focus-ring"
               >
-                Let's Connect
-              </a>
+                Connect
+              </button>
             </div>
           </div>
         </div>
@@ -737,6 +1196,175 @@
       </div>
     </footer>
 
+    <div id="osOverlay" class="os-overlay" aria-hidden="true">
+      <div class="os-desktop">
+        <div class="os-topbar">
+          <div class="os-window-controls" aria-hidden="true">
+            <span class="bg-rose-400"></span>
+            <span class="bg-amber-400"></span>
+            <span class="bg-emerald-400"></span>
+          </div>
+          <div class="os-title">DevPulse OS</div>
+          <button type="button" id="closeOs" class="rounded-full border border-slate-700 bg-slate-900/80 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-slate-200 focus-ring">
+            Close
+          </button>
+        </div>
+
+        <div class="os-main">
+          <aside class="os-sidebar" aria-label="Quick launch apps">
+            <div class="dock-app is-active" data-app="browser">
+              <div class="dock-icon">B</div>
+              <span>Browser</span>
+            </div>
+            <div class="dock-app" data-app="terminal">
+              <div class="dock-icon">T</div>
+              <span>Terminal</span>
+            </div>
+            <div class="dock-app" data-app="files">
+              <div class="dock-icon">F</div>
+              <span>Files</span>
+            </div>
+            <div class="dock-app" data-app="tools">
+              <div class="dock-icon">A</div>
+              <span>Agents</span>
+            </div>
+          </aside>
+
+          <div class="desktop-surface">
+            <div class="desktop-grid" aria-hidden="true">
+              <div class="app-tile" data-app="browser">
+                <div class="tile-icon bg-gradient-to-br from-emerald-400/80 to-cyan-500/80">B</div>
+                <div class="tile-name">Browser</div>
+              </div>
+              <div class="app-tile" data-app="terminal">
+                <div class="tile-icon bg-gradient-to-br from-violet-500/80 to-cyan-500/80">T</div>
+                <div class="tile-name">Terminal</div>
+              </div>
+              <div class="app-tile" data-app="files">
+                <div class="tile-icon bg-gradient-to-br from-sky-500/80 to-emerald-400/80">F</div>
+                <div class="tile-name">Files</div>
+              </div>
+              <div class="app-tile" data-app="tools">
+                <div class="tile-icon bg-gradient-to-br from-cyan-500/80 to-violet-500/80">A</div>
+                <div class="tile-name">Agents</div>
+              </div>
+            </div>
+
+            <div class="desktop-window">
+              <div class="window-header">
+                <div class="window-left">
+                  <span class="window-dot bg-rose-400"></span>
+                  <span class="window-dot bg-amber-400"></span>
+                  <span class="window-dot bg-emerald-400"></span>
+                </div>
+                <div class="window-label">Portfolio Browser</div>
+                <div class="window-actions">
+                  <button type="button">_</button>
+                  <button type="button">◫</button>
+                  <button type="button">×</button>
+                </div>
+              </div>
+
+              <div class="browser-ui">
+                <div class="browser-toolbar">
+                  <div class="browser-nav" aria-hidden="true">
+                    <button type="button">←</button>
+                    <button type="button">→</button>
+                    <button type="button">⟳</button>
+                  </div>
+                  <div class="browser-url">https://devpulse.local/portfolio</div>
+                </div>
+
+                <div class="browser-content">
+                  <div class="mini-site">
+                    <div class="mini-head">
+                      <div class="mini-brand">
+                        <div class="mini-brand-mark">D</div>
+                        <span>DevPulse</span>
+                      </div>
+
+                      <div class="mini-nav" aria-label="Mini navigation">
+                        <span>About</span>
+                        <span>Tools</span>
+                        <span>Projects</span>
+                        <span>Profile</span>
+                      </div>
+                    </div>
+
+                    <div class="mini-hero">
+                      <div>
+                        <span class="mini-pill">AI Agents • Software Tools</span>
+                        <div class="mini-title">
+                          Build AI systems.<br />
+                          <span class="grad">Ship faster.</span>
+                        </div>
+                        <div class="mini-sub">
+                          I design software systems, AI automation workflows, and developer tools that turn ideas into reliable, scalable product experiences.
+                        </div>
+                        <div class="mini-actions">
+                          <div class="mini-btn primary">View GitHub</div>
+                          <div class="mini-btn secondary">Explore Tools</div>
+                        </div>
+                      </div>
+
+                      <div class="mini-wire">
+                        <div class="mini-wire-header">
+                          <span class="text-[10px] uppercase tracking-[0.2em] text-slate-400">Agent Pulse</span>
+                          <span class="text-[10px] font-bold text-emerald-300">96%</span>
+                        </div>
+                        <div class="mini-wire-body">
+                          <div class="bars">
+                            <div class="bar"><span style="width: 91%"></span></div>
+                            <div class="bar"><span style="width: 88%"></span></div>
+                            <div class="bar"><span style="width: 97%"></span></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="mini-metrics">
+                      <div class="mini-metric">
+                        <strong>8+</strong>
+                        <span class="text-[10px] uppercase tracking-[0.16em] text-slate-400">stacks</span>
+                      </div>
+                      <div class="mini-metric">
+                        <strong>30+</strong>
+                        <span class="text-[10px] uppercase tracking-[0.16em] text-slate-400">workflows</span>
+                      </div>
+                      <div class="mini-metric">
+                        <strong>24/7</strong>
+                        <span class="text-[10px] uppercase tracking-[0.16em] text-slate-400">mindset</span>
+                      </div>
+                    </div>
+
+                    <div class="mini-cards">
+                      <div class="mini-card">
+                        <div class="text-[10px] uppercase tracking-[0.18em] text-cyan-300">AI</div>
+                        <div class="mt-2 text-lg font-bold text-white">Prompt Lab</div>
+                      </div>
+                      <div class="mini-card">
+                        <div class="text-[10px] uppercase tracking-[0.18em] text-emerald-300">Ops</div>
+                        <div class="mt-2 text-lg font-bold text-white">Action Queue</div>
+                      </div>
+                      <div class="mini-card">
+                        <div class="text-[10px] uppercase tracking-[0.18em] text-violet-300">Data</div>
+                        <div class="mt-2 text-lg font-bold text-white">Signal Grid</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="taskbar">
+              <div class="taskbar-pill">DevPulse OS</div>
+              <div class="system-clock" id="systemClock">10:00 AM</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script>
       const promptOutput = document.getElementById("promptOutput");
       const copyPromptBtn = document.getElementById("copyPrompt");
@@ -744,6 +1372,68 @@
       const templateButtons = document.querySelectorAll(".template-btn");
       const projectTags = document.querySelectorAll(".tag");
       const projectCards = document.querySelectorAll(".project-card");
+      const osOverlay = document.getElementById("osOverlay");
+      const closeOsBtn = document.getElementById("closeOs");
+      const openOsButtons = document.querySelectorAll("[data-open-os]");
+      const systemClock = document.getElementById("systemClock");
+      const appTiles = document.querySelectorAll(".app-tile, .dock-app");
+
+      const updateClock = () => {
+        const now = new Date();
+        systemClock.textContent = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+      };
+
+      updateClock();
+      setInterval(updateClock, 15000);
+
+      const openOs = () => {
+        osOverlay.classList.add("show");
+        osOverlay.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      };
+
+      const closeOs = () => {
+        osOverlay.classList.remove("show");
+        osOverlay.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      };
+
+      openOsButtons.forEach((button) => {
+        button.addEventListener("click", openOs);
+      });
+
+      closeOsBtn.addEventListener("click", closeOs);
+
+      osOverlay.addEventListener("click", (event) => {
+        if (event.target === osOverlay) {
+          closeOs();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && osOverlay.classList.contains("show")) {
+          closeOs();
+        }
+      });
+
+      appTiles.forEach((tile) => {
+        tile.addEventListener("click", () => {
+          const target = tile.dataset.app;
+          document.querySelectorAll(".dock-app").forEach((item) => {
+            item.classList.toggle("is-active", item.dataset.app === target);
+          });
+
+          const label = {
+            browser: "Portfolio Browser",
+            terminal: "System Terminal",
+            files: "DevPulse Files",
+            tools: "Agent Console"
+          };
+
+          const title = document.querySelector(".window-label");
+          if (title) title.textContent = label[target] || "Portfolio Browser";
+        });
+      });
 
       const templates = {
         web: `You are an AI web scraper agent. Extract product data from target listings, structure the output into JSON, and summarize key trends with confidence scoring and anomalies.`,
