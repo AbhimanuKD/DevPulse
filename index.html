@@ -14,8 +14,8 @@
         theme: {
           extend: {
             boxShadow: {
-              neon: "0 0 26px rgba(34, 211, 238, 0.4)",
-              green: "0 0 26px rgba(34, 197, 94, 0.35)",
+              neon: "0 0 26px rgba(34, 211, 238, 0.35)",
+              green: "0 0 26px rgba(34, 197, 94, 0.3)",
             },
             colors: {
               pulse: {
@@ -101,7 +101,25 @@
         font-family: "SFMono-Regular", Consolas, monospace;
         border-left: 2px solid rgba(74, 222, 128, 0.25);
         padding-left: 10px;
-        animation: fadeIn 0.3s ease;
+        animation: fadeIn 0.35s ease;
+      }
+
+      .project-card {
+        transition: transform 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-4px);
+      }
+
+      .tag {
+        transition: all 0.2s ease;
+      }
+
+      .tag.active {
+        background: rgba(34, 211, 238, 0.12);
+        border-color: rgba(34, 211, 238, 0.4);
+        color: #dffcff;
       }
 
       @keyframes fadeIn {
@@ -111,6 +129,15 @@
 
       .avatar-glow {
         background: linear-gradient(135deg, rgba(74, 222, 128, 0.18), rgba(34, 211, 238, 0.18), rgba(59, 130, 246, 0.16));
+      }
+
+      .pulse-dot {
+        animation: blink 1.4s infinite ease-in-out;
+      }
+
+      @keyframes blink {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
       }
     </style>
   </head>
@@ -131,6 +158,7 @@
         <div class="hidden items-center gap-8 text-sm text-slate-300 md:flex">
           <a href="#about" class="transition hover:text-emerald-300">About</a>
           <a href="#tools" class="transition hover:text-cyan-300">Tools</a>
+          <a href="#projects" class="transition hover:text-cyan-300">Projects</a>
           <a href="#profile" class="transition hover:text-cyan-300">Profile</a>
         </div>
 
@@ -150,7 +178,7 @@
       <section id="about" class="grid items-center gap-10 py-8 lg:grid-cols-[1.15fr_0.85fr] lg:py-16">
         <div class="relative">
           <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-500/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-cyan-200">
-            <span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(74,222,128,1)]"></span>
+            <span class="pulse-dot h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(74,222,128,1)]"></span>
             AI Agents • Software Tools
           </div>
 
@@ -272,7 +300,7 @@
         </div>
       </section>
 
-      <section id="tools" class="py-10">
+      <section id="tools" class="py-8 sm:py-10">
         <div class="mb-8">
           <p class="mb-2 text-sm font-medium uppercase tracking-[0.23em] text-emerald-300">Dynamic AI tools</p>
           <h2 class="text-3xl font-black text-white">AI Agent workspace</h2>
@@ -320,16 +348,97 @@
                 <h3 class="mt-2 text-2xl font-bold text-white">API Console Log</h3>
               </div>
               <div class="flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300">
-                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                <span class="pulse-dot h-2 w-2 rounded-full bg-emerald-400"></span>
                 Streaming
               </div>
             </div>
 
-            <div id="consoleStream" class="terminal h-[330px] overflow-hidden rounded-2xl p-4 text-sm leading-6 text-slate-200">
+            <div id="consoleStream" class="terminal h-[332px] overflow-hidden rounded-2xl p-4 text-sm leading-6 text-slate-200">
               <div class="log-line text-emerald-300">[system] Initializing DevPulse agent runtime...</div>
               <div class="log-line text-cyan-300">[network] Establishing secure connection to model gateway...</div>
               <div class="log-line text-emerald-300">[agent] Loading prompt context and vector memory...</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="py-10">
+        <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="mb-2 text-sm font-medium uppercase tracking-[0.24em] text-cyan-300">Projects</p>
+            <h2 class="text-3xl font-black text-white">Built for automation and product velocity</h2>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <button class="tag active rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-cyan-100" data-filter="all">All</button>
+            <button class="tag rounded-full border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-slate-200" data-filter="ai">AI</button>
+            <button class="tag rounded-full border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-slate-200" data-filter="tools">Tools</button>
+            <button class="tag rounded-full border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-slate-200" data-filter="systems">Systems</button>
+          </div>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          <article class="project-card glass rounded-3xl p-5 neon-border" data-category="ai">
+            <div class="mb-4 flex items-center justify-between">
+              <span class="rounded-full border border-emerald-400/25 bg-emerald-500/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-emerald-200">AI</span>
+              <span class="text-xs text-slate-400">2026</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Insight Agent</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-300">A decision-support agent that converts fragmented customer data into concise strategy insights, updates and summaries.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="rounded-full border border-slate-700 bg-slate-900/70 px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-slate-200">LLM</span>
+              <span class="rounded-full border border-slate-700 bg-slate-900/70 px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-slate-200">RAG</span>
+            </div>
+          </article>
+
+          <article class="project-card glass rounded-3xl p-5 neon-border" data-category="tools">
+            <div class="mb-4 flex items-center justify-between">
+              <span class="rounded-full border border-cyan-400/25 bg-cyan-500/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-200">Tools</span>
+              <span class="text-xs text-slate-400">2025</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Workflow Orchestrator</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-300">A developer-centric automation hub for task routing, script execution, scheduling, and status visibility.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="rounded-full border border-slate-700 bg-slate-900/70 px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-slate-200">Node</span>
+              <span class="rounded-full border border-slate-700 bg-slate-900/70 px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-slate-200">API</span>
+            </div>
+          </article>
+
+          <article class="project-card glass rounded-3xl p-5 neon-border" data-category="systems">
+            <div class="mb-4 flex items-center justify-between">
+              <span class="rounded-full border border-violet-400/25 bg-violet-500/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-violet-200">Systems</span>
+              <span class="text-xs text-slate-400">2024</span>
+            </div>
+            <h3 class="text-xl font-bold text-white">Pulse Monitoring</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-300">A system health dashboard focused on uptime, sync, queues, memory and operational intelligence for product teams.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="rounded-full border border-slate-700 bg-slate-900/70 px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-slate-200">Monitoring</span>
+              <span class="rounded-full border border-slate-700 bg-slate-900/70 px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-slate-200">Ops</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="py-8">
+        <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div class="glass rounded-3xl p-5 border border-slate-800/70">
+            <div class="mb-3 text-xs uppercase tracking-[0.2em] text-cyan-300">Core</div>
+            <h3 class="text-xl font-bold text-white">AI Agent Design</h3>
+            <p class="mt-3 text-sm text-slate-300">Prompt orchestration, retrieval flows, tool planning, and human-in-the-loop automation.</p>
+          </div>
+          <div class="glass rounded-3xl p-5 border border-slate-800/70">
+            <div class="mb-3 text-xs uppercase tracking-[0.2em] text-emerald-300">Build</div>
+            <h3 class="text-xl font-bold text-white">Automation Systems</h3>
+            <p class="mt-3 text-sm text-slate-300">Streamlined developer workflows, task automation, and reusable tool chains.</p>
+          </div>
+          <div class="glass rounded-3xl p-5 border border-slate-800/70">
+            <div class="mb-3 text-xs uppercase tracking-[0.2em] text-violet-300">Optimize</div>
+            <h3 class="text-xl font-bold text-white">Code Efficiency</h3>
+            <p class="mt-3 text-sm text-slate-300">Refactoring architecture, reducing complexity, and improving release velocity.</p>
+          </div>
+          <div class="glass rounded-3xl p-5 border border-slate-800/70">
+            <div class="mb-3 text-xs uppercase tracking-[0.2em] text-sky-300">Ship</div>
+            <h3 class="text-xl font-bold text-white">Fast Delivery</h3>
+            <p class="mt-3 text-sm text-slate-300">Lean product cycles, fast iteration, and production-ready engineering standards.</p>
           </div>
         </div>
       </section>
@@ -403,6 +512,8 @@
       const copyPromptBtn = document.getElementById("copyPrompt");
       const consoleStream = document.getElementById("consoleStream");
       const templateButtons = document.querySelectorAll(".template-btn");
+      const projectTags = document.querySelectorAll(".tag");
+      const projectCards = document.querySelectorAll(".project-card");
 
       const templates = {
         web: `You are an AI web scraper agent. Extract product data from target listings, structure the output into JSON, and summarize key trends with confidence scoring and anomalies.`,
@@ -426,6 +537,9 @@
           }, 1200);
         } catch (error) {
           copyPromptBtn.textContent = "Copy failed";
+          setTimeout(() => {
+            copyPromptBtn.textContent = "Copy Prompt";
+          }, 1200);
         }
       });
 
@@ -441,7 +555,7 @@
         "[audit] Guardrails active — anomaly detection enabled.",
         "[terminal] Response generated with low-latency execution path.",
         "[agent] Preparing final task summary and command queue...",
-        "[done] Deployment prepared for review.",
+        "[done] Deployment prepared for review."
       ];
 
       let logIndex = 0;
@@ -474,6 +588,26 @@
       }
 
       setInterval(addLogLine, 1200);
+
+      projectTags.forEach((tag) => {
+        tag.addEventListener("click", () => {
+          const filter = tag.dataset.filter;
+          projectTags.forEach((item) => {
+            item.classList.toggle("active", item === tag);
+            item.classList.toggle("border-cyan-400/30", item === tag);
+            item.classList.toggle("text-cyan-100", item === tag);
+            item.classList.toggle("bg-cyan-500/10", item === tag);
+            item.classList.toggle("border-slate-700", item !== tag);
+            item.classList.toggle("bg-slate-900", item !== tag);
+            item.classList.toggle("text-slate-200", item !== tag);
+          });
+
+          projectCards.forEach((card) => {
+            const show = filter === "all" || card.dataset.category === filter;
+            card.style.display = show ? "block" : "none";
+          });
+        });
+      });
     </script>
   </body>
 </html>
