@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DevPulse | Portfolio & Tools</title>
+    <meta
+      name="description"
+      content="DevPulse is a futuristic developer portfolio and tool hub for web development, automation, and engineering workflows."
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            boxShadow: {
+              neon: "0 0 30px rgba(96, 165, 250, 0.45)",
+              purple: "0 0 30px rgba(168, 85, 247, 0.35)",
+            },
+            colors: {
+              pulse: {
+                950: "#050816",
+                900: "#0b1120",
+                800: "#111827",
+                700: "#1f2937",
+                600: "#374151",
+                500: "#64748b",
+                400: "#94a3b8",
+                300: "#cbd5e1",
+              },
+            },
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        --bg: #050816;
+        --bg-soft: rgba(15, 23, 42, 0.7);
+        --panel: rgba(15, 23, 42, 0.85);
+        --card: rgba(17, 24, 39, 0.9);
+        --muted: #94a3b8;
+        --text: #e2e8f0;
+        --line: rgba(148, 163, 184, 0.14);
+        --blue: #38bdf8;
+        --purple: #a78bfa;
+        --cyan: #22d3ee;
+        --green: #34d399;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background:
+          radial-gradient(circle at top left, rgba(56, 189, 248, 0.15), transparent 28%),
+          radial-gradient(circle at right center, rgba(168, 85, 247, 0.16), transparent 25%),
+          linear-gradient(180deg, #050816 0%, #0b1120 100%);
+        color: var(--text);
+      }
+
+      .glass {
+        background: rgba(15, 23, 42, 0.62);
+        border: 1px solid rgba(148, 163, 184, 0.14);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+
+      .neon-border {
+        border: 1px solid rgba(96, 165, 250, 0.35);
+      }
+
+      .text-gradient {
+        background: linear-gradient(90deg, #67e8f9 0%, #a78bfa 35%, #60a5fa 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .btn-glow {
+        box-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
+      }
+
+      .btn-glow-purple {
+        box-shadow: 0 0 24px rgba(168, 85, 247, 0.35);
+      }
+
+      .stat-bar {
+        height: 12px;
+        border-radius: 9999px;
+        background: rgba(148, 163, 184, 0.12);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .stat-fill {
+        position: absolute;
+        inset: 0 auto 0 0;
+        border-radius: inherit;
+        background: linear-gradient(90deg, #22d3ee 0%, #38bdf8 35%, #a78bfa 100%);
+        box-shadow: 0 0 16px rgba(96, 165, 250, 0.6);
+      }
+
+      .calculator-btn {
+        transition: all 0.2s ease;
+      }
+
+      .calculator-btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .grid-pattern {
+        background-image:
+          linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+        background-size: 26px 26px;
+      }
+
+      .avatar-shimmer {
+        background: linear-gradient(135deg, rgba(103, 232, 249, 0.2), rgba(167, 139, 250, 0.25), rgba(59, 130, 246, 0.2));
+        position: relative;
+        overflow: hidden;
+      }
+
+      .avatar-shimmer::after {
+        content: "";
+        position: absolute;
+        inset: -30%;
+        background: linear-gradient(
+          120deg,
+          transparent 20%,
+          rgba(255, 255, 255, 0.25) 50%,
+          transparent 80%
+        );
+        transform: translateX(-100%) rotate(12deg);
+        animation: shimmer 3.5s infinite;
+      }
+
+      @keyframes shimmer {
+        0% { transform: translateX(-120%) rotate(12deg); }
+        100% { transform: translateX(120%) rotate(12deg); }
+      }
+    </style>
+  </head>
+  <body class="antialiased selection:bg-cyan-500/30">
+    <div class="grid-pattern absolute inset-0 -z-10 opacity-35"></div>
+
+    <header class="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-3">
+          <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-violet-500 shadow-neon">
+            <span class="text-lg font-black text-slate-950">D</span>
+          </div>
+          <div>
+            <span class="text-xl font-black tracking-wide text-white">DevPulse</span>
+          </div>
+        </div>
+
+        <div class="hidden items-center gap-8 text-sm text-slate-300 md:flex">
+          <a href="#about" class="transition hover:text-cyan-300">About</a>
+          <a href="#tools" class="transition hover:text-cyan-300">Tools</a>
+          <a href="#profile" class="transition hover:text-cyan-300">Profile</a>
+        </div>
+
+        <a
+          href="https://www.instagram.com/abhimanu_011/"
+          target="_blank"
+          rel="noreferrer"
+          class="inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-gradient-to-r from-cyan-500/15 via-sky-500/10 to-violet-500/15 px-4 py-2 text-sm font-semibold text-cyan-100 transition hover:scale-[1.02] hover:border-cyan-300 hover:shadow-neon"
+        >
+          <span>◎</span>
+          <span>Follow Me on Instagram</span>
+        </a>
+      </nav>
+    </header>
+
+    <main class="mx-auto max-w-6xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
+      <section id="about" class="grid items-center gap-10 py-8 lg:grid-cols-[1.2fr_0.8fr] lg:py-16">
+        <div class="relative">
+          <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-violet-500/10 px-3 py-1 text-xs font-medium tracking-[0.2em] text-violet-200 uppercase">
+            <span class="h-2 w-2 rounded-full bg-violet-400 shadow-[0_0_12px_rgba(167,139,250,1)]"></span>
+            Web Developer • Automation Enthusiast
+          </div>
+
+          <h1 class="max-w-xl text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
+            Build fast.
+            <span class="text-gradient">Ship smarter.</span>
+          </h1>
+
+          <p class="mt-6 max-w-xl text-lg leading-8 text-slate-300">
+            I craft sleek digital experiences, streamline workflows, and turn complex ideas into simple, scalable products that feel effortless for users.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href="https://github.com/AbhimanuKD"
+              target="_blank"
+              rel="noreferrer"
+              class="btn-glow inline-flex items-center rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3 text-sm font-bold text-slate-950 transition hover:scale-[1.02]"
+            >
+              View Github
+            </a>
+            <a
+              href="#tools"
+              class="inline-flex items-center rounded-full border border-slate-600 bg-slate-900/60 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/50 hover:text-cyan-200"
+            >
+              Explore Tools
+            </a>
+          </div>
+
+          <div class="mt-10 flex flex-wrap gap-6 text-sm text-slate-300">
+            <div>
+              <div class="text-2xl font-black text-white">4+</div>
+              <div class="text-slate-400">Years building</div>
+            </div>
+            <div>
+              <div class="text-2xl font-black text-white">18+</div>
+              <div class="text-slate-400">Projects shipped</div>
+            </div>
+            <div>
+              <div class="text-2xl font-black text-white">24/7</div>
+              <div class="text-slate-400">Automation mindset</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="glass neon-border relative overflow-hidden rounded-3xl p-5 shadow-neon">
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-violet-500/10"></div>
+
+            <div class="relative">
+              <div class="mb-6 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <div class="h-3 w-3 rounded-full bg-rose-400"></div>
+                  <div class="h-3 w-3 rounded-full bg-amber-400"></div>
+                  <div class="h-3 w-3 rounded-full bg-emerald-400"></div>
+                </div>
+                <div class="rounded-full border border-slate-700 bg-slate-950/60 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                  live
+                </div>
+              </div>
+
+              <div class="rounded-2xl border border-slate-700 bg-slate-950/70 p-5">
+                <div class="mb-4 flex items-center justify-between">
+                  <div>
+                    <div class="text-xs uppercase tracking-[0.2em] text-slate-400">Focus</div>
+                    <div class="mt-2 text-xl font-bold text-white">Product Velocity</div>
+                  </div>
+                  <div class="rounded-lg bg-cyan-500/10 px-3 py-2 text-sm font-semibold text-cyan-300">94%</div>
+                </div>
+
+                <div class="space-y-4">
+                  <div>
+                    <div class="mb-2 flex justify-between text-xs text-slate-300">
+                      <span>UI Performance</span>
+                      <span>92%</span>
+                    </div>
+                    <div class="stat-bar">
+                      <div class="stat-fill" style="width: 92%;"></div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="mb-2 flex justify-between text-xs text-slate-300">
+                      <span>Automation</span>
+                      <span>87%</span>
+                    </div>
+                    <div class="stat-bar">
+                      <div class="stat-fill" style="width: 87%;"></div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="mb-2 flex justify-between text-xs text-slate-300">
+                      <span>System Stability</span>
+                      <span>96%</span>
+                    </div>
+                    <div class="stat-bar">
+                      <div class="stat-fill" style="width: 96%;"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-6 grid grid-cols-3 gap-3">
+                  <div class="rounded-xl border border-slate-700 bg-slate-900/70 p-3">
+                    <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">Builds</div>
+                    <div class="mt-2 text-xl font-black text-white">12</div>
+                  </div>
+                  <div class="rounded-xl border border-slate-700 bg-slate-900/70 p-3">
+                    <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">APIs</div>
+                    <div class="mt-2 text-xl font-black text-white">28</div>
+                  </div>
+                  <div class="rounded-xl border border-slate-700 bg-slate-900/70 p-3">
+                    <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">UX</div>
+                    <div class="mt-2 text-xl font-black text-white">A+</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tools" class="py-10">
+        <div class="mb-8 flex items-end justify-between gap-4">
+          <div>
+            <p class="mb-2 text-sm font-medium uppercase tracking-[0.22em] text-cyan-300">Dynamic tools</p>
+            <h2 class="text-3xl font-black text-white">Build, compute, optimize.</h2>
+          </div>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <div class="glass neon-border rounded-3xl p-5 shadow-neon">
+            <div class="mb-5 flex items-center justify-between">
+              <div>
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Tool</p>
+                <h3 class="mt-2 text-2xl font-bold text-white">Calculator</h3>
+              </div>
+              <div class="rounded-full border border-cyan-400/20 bg-cyan-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">
+                Instant
+              </div>
+            </div>
+
+            <div class="rounded-2xl border border-slate-700 bg-slate-950/80 p-4">
+              <div id="calculator-display" class="min-h-[72px] overflow-hidden break-all bg-slate-900/80 px-4 py-3 text-right text-3xl font-bold text-white rounded-xl border border-slate-700">
+                0
+              </div>
+
+              <div class="mt-4 grid grid-cols-4 gap-3">
+                <button class="calculator-btn operator rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-4 text-xl font-bold text-cyan-300 hover:border-cyan-400/40" data-action="clear">C</button>
+                <button class="calculator-btn operator rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-4 text-xl font-bold text-cyan-300 hover:border-cyan-400/40" data-action="delete">⌫</button>
+                <button class="calculator-btn operator rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-4 text-xl font-bold text-cyan-300 hover:border-cyan-400/40" data-action="percent">%</button>
+                <button class="calculator-btn operator rounded-xl border border-violet-400/30 bg-gradient-to-r from-violet-500/20 to-cyan-500/20 px-4 py-4 text-xl font-bold text-violet-200 hover:border-violet-300" data-action="operator" data-value="/">÷</button>
+
+                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="7">7</button>
+                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="8">8</button>
+                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="9">9</button>
+                <button class="calculator-btn operator rounded-xl border border-violet-400/30 bg-gradient-to-r from-violet-500/20 to-cyan-500/20 px-4 py-4 text-xl font-bold text-violet-200 hover:border-violet-300" data-action="operator" data-value="*">×</button>
+
+                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="4">4</button>
+                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="5">5</button>
+                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="6">6</button>
+                <button class="calculator-btn operator rounded-xl border border-violet-400/30 bg-gradient-to-r from-violet-500/20 to-cyan-500/20 px-4 py-4 text-xl font-bold text-violet-200 hover:border-violet-300" data-action="operator" data-value="-">−</button>
+
+                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="1">1</button>
+                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="2">2</button>
+                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value="3">3</button>
+                <button class="calculator-btn operator rounded-xl border border-violet-400/30 bg-gradient-to-r from-violet-500/20 to-cyan-500/20 px-4 py-4 text-xl font-bold text-violet-200 hover:border-violet-300" data-action="operator" data-value="+">+</button>
+
+                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40 col-span-2" data-value="0">0</button>
+                <button class="calculator-btn number rounded-xl border border-slate-700 bg-slate-900/80 px-4 py-4 text-xl font-semibold text-white hover:border-cyan-400/40" data-value=".">.</button>
+                <button class="calculator-btn equals rounded-xl border border-cyan-400/30 bg-gradient-to-r from-cyan-400 to-blue-500 px-4 py-4 text-xl font-black text-slate-950 hover:shadow-neon" data-action="equals">=</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass neon-border rounded-3xl p-5 shadow-purple">
+            <div class="mb-5 flex items-center justify-between">
+              <div>
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">System</p>
+                <h3 class="mt-2 text-2xl font-bold text-white">Quick-Stats</h3>
+              </div>
+              <div class="flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300">
+                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                Live
+              </div>
+            </div>
+
+            <div class="space-y-5">
+              <div class="rounded-2xl border border-slate-700 bg-slate-950/70 p-4">
+                <div class="mb-2 flex items-center justify-between">
+                  <span class="text-sm text-slate-300">CPU Load</span>
+                  <span id="cpuValue" class="text-sm font-bold text-cyan-300">72%</span>
+                </div>
+                <div class="stat-bar">
+                  <div id="cpuBar" class="stat-fill" style="width: 72%;"></div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl border border-slate-700 bg-slate-950/70 p-4">
+                <div class="mb-2 flex items-center justify-between">
+                  <span class="text-sm text-slate-300">Memory</span>
+                  <span id="memoryValue" class="text-sm font-bold text-violet-300">81%</span>
+                </div>
+                <div class="stat-bar">
+                  <div id="memoryBar" class="stat-fill" style="width: 81%;"></div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl border border-slate-700 bg-slate-950/70 p-4">
+                <div class="mb-2 flex items-center justify-between">
+                  <span class="text-sm text-slate-300">Build Queue</span>
+                  <span id="queueValue" class="text-sm font-bold text-emerald-300">63%</span>
+                </div>
+                <div class="stat-bar">
+                  <div id="queueBar" class="stat-fill" style="width: 63%;"></div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl border border-slate-700 bg-slate-950/70 p-4">
+                <div class="mb-2 flex items-center justify-between">
+                  <span class="text-sm text-slate-300">Deploy Sync</span>
+                  <span id="deployValue" class="text-sm font-bold text-cyan-300">88%</span>
+                </div>
+                <div class="stat-bar">
+                  <div id="deployBar" class="stat-fill" style="width: 88%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-6 grid grid-cols-2 gap-3">
+              <div class="rounded-xl border border-slate-700 bg-slate-900/70 p-3">
+                <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">Uptime</div>
+                <div class="mt-2 text-xl font-black text-white">99.98%</div>
+              </div>
+              <div class="rounded-xl border border-slate-700 bg-slate-900/70 p-3">
+                <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">Network</div>
+                <div class="mt-2 text-xl font-black text-white">1.2 Gbps</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="profile" class="py-12">
+        <div class="flex items-center justify-center">
+          <div class="glass neon-border relative w-full max-w-lg overflow-hidden rounded-[28px] p-6 shadow-neon">
+            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-violet-500/10"></div>
+
+            <div class="relative">
+              <div class="mb-4 flex items-center justify-between">
+                <div class="text-xs uppercase tracking-[0.24em] text-slate-400">Profile</div>
+                <div class="rounded-full border border-slate-700 bg-slate-900/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-violet-200">
+                  Available
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4">
+                <div class="avatar-shimmer flex h-20 w-20 items-center justify-center rounded-2xl border border-cyan-400/30 bg-gradient-to-br from-cyan-400/30 via-violet-500/20 to-blue-500/20 text-2xl font-black text-white shadow-neon">
+                  AK
+                </div>
+
+                <div>
+                  <h3 class="text-2xl font-black text-white">Abhimanu Kumar</h3>
+                  <p class="mt-1 text-sm text-cyan-300">Web Developer • Automation Enthusiast</p>
+                </div>
+              </div>
+
+              <div class="mt-6 space-y-3 text-sm text-slate-300">
+                <div class="flex items-center justify-between rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2">
+                  <span>Specialty</span>
+                  <span class="font-semibold text-white">Frontend Systems</span>
+                </div>
+                <div class="flex items-center justify-between rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2">
+                  <span>Focus</span>
+                  <span class="font-semibold text-white">UX + Automation</span>
+                </div>
+                <div class="flex items-center justify-between rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2">
+                  <span>Location</span>
+                  <span class="font-semibold text-white">India</span>
+                </div>
+              </div>
+
+              <div class="mt-6 rounded-2xl border border-cyan-400/20 bg-cyan-500/10 p-4 text-sm text-cyan-100">
+                Turning complex workflows into elegant digital experiences — one interaction at a time.
+              </div>
+
+              <a
+                href="https://www.instagram.com/abhimanu_011/"
+                target="_blank"
+                rel="noreferrer"
+                class="btn-glow-purple mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-violet-500 to-cyan-500 px-5 py-3 text-base font-bold text-white transition hover:scale-[1.01]"
+              >
+                Let's Connect
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-slate-800/80 bg-slate-950/80">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-6 text-sm text-slate-400 sm:px-6 lg:px-8">
+        <div>© 2026 DevPulse</div>
+        <div>Built for curious minds and fast-moving ideas.</div>
+      </div>
+    </footer>
+
+    <script>
+      const display = document.getElementById("calculator-display");
+      let currentInput = "0";
+      let storedValue = null;
+      let operator = null;
+      let waitingForNewValue = false;
+
+      function updateDisplay() {
+        display.textContent = currentInput;
+      }
+
+      function inputNumber(value) {
+        if (waitingForNewValue) {
+          currentInput = value;
+          waitingForNewValue = false;
+        } else {
+          currentInput = currentInput === "0" ? value : currentInput + value;
+        }
+        updateDisplay();
+      }
+
+      function inputDecimal() {
+        if (waitingForNewValue) {
+          currentInput = "0.";
+          waitingForNewValue = false;
+          updateDisplay();
+          return;
+        }
+
+        if (!currentInput.includes(".")) {
+          currentInput += ".";
+          updateDisplay();
+        }
+      }
+
+      function performCalculation() {
+        const inputValue = parseFloat(currentInput);
+
+        if (storedValue === null || operator === null) return;
+
+        switch (operator) {
+          case "+":
+            storedValue += inputValue;
+            break;
+          case "-":
+            storedValue -= inputValue;
+            break;
+          case "*":
+            storedValue *= inputValue;
+            break;
+          case "/":
+            storedValue /= inputValue;
+            break;
+          default:
+            return;
+        }
+
+        currentInput = String(storedValue);
+        operator = null;
+        storedValue = null;
+        waitingForNewValue = true;
+        updateDisplay();
+      }
+
+      function handleOperator(nextOperator) {
+        const inputValue = parseFloat(currentInput);
+
+        if (storedValue === null) {
+          storedValue = inputValue;
+        } else if (operator) {
+          performCalculation();
+          storedValue = parseFloat(currentInput);
+        }
+
+        operator = nextOperator;
+        waitingForNewValue = true;
+        currentInput = String(storedValue);
+        updateDisplay();
+      }
+
+      function clearCalculator() {
+        currentInput = "0";
+        storedValue = null;
+        operator = null;
+        waitingForNewValue = false;
+        updateDisplay();
+      }
+
+      function deleteLast() {
+        if (waitingForNewValue) return;
+        currentInput = currentInput.length > 1 ? currentInput.slice(0, -1) : "0";
+        updateDisplay();
+      }
+
+      function percentValue() {
+        const value = parseFloat(currentInput);
+        currentInput = String(value / 100);
+        updateDisplay();
+      }
+
+      document.querySelectorAll(".number").forEach((button) => {
+        button.addEventListener("click", () => {
+          const value = button.dataset.value;
+          if (value === ".") {
+            inputDecimal();
+          } else {
+            inputNumber(value);
+          }
+        });
+      });
+
+      document.querySelectorAll(".operator").forEach((button) => {
+        button.addEventListener("click", () => {
+          const action = button.dataset.action;
+          const value = button.dataset.value;
+
+          if (action === "clear") {
+            clearCalculator();
+            return;
+          }
+
+          if (action === "delete") {
+            deleteLast();
+            return;
+          }
+
+          if (action === "percent") {
+            percentValue();
+            return;
+          }
+
+          if (action === "operator") {
+            handleOperator(value);
+          }
+        });
+      });
+
+      document.querySelector('[data-action="equals"]').addEventListener("click", () => {
+        if (storedValue !== null && operator !== null) {
+          performCalculation();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        const { key } = event;
+
+        if (/^[0-9]$/.test(key)) {
+          inputNumber(key);
+        } else if (key === ".") {
+          inputDecimal();
+        } else if (["+", "-", "*", "/"].includes(key)) {
+          handleOperator(key);
+        } else if (key === "Enter" || key === "=") {
+          event.preventDefault();
+          if (storedValue !== null && operator !== null) {
+            performCalculation();
+          }
+        } else if (key === "Backspace") {
+          deleteLast();
+        } else if (key === "Escape") {
+          clearCalculator();
+        }
+      });
+
+      const stats = [
+        { key: "cpu", value: 72, bar: document.getElementById("cpuBar"), label: document.getElementById("cpuValue") },
+        { key: "memory", value: 81, bar: document.getElementById("memoryBar"), label: document.getElementById("memoryValue") },
+        { key: "queue", value: 63, bar: document.getElementById("queueBar"), label: document.getElementById("queueValue") },
+        { key: "deploy", value: 88, bar: document.getElementById("deployBar"), label: document.getElementById("deployValue") },
+      ];
+
+      function animateStats() {
+        stats.forEach((item) => {
+          const min = Math.max(35, item.value - 18);
+          const max = Math.min(99, item.value + 20);
+          const nextValue = Math.floor(Math.random() * (max - min + 1)) + min;
+          item.value = nextValue;
+          item.bar.style.width = `${nextValue}%`;
+          item.label.textContent = `${nextValue}%`;
+        });
+      }
+
+      setInterval(animateStats, 2200);
+    </script>
+  </body>
+</html>
