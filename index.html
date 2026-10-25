@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevPulse | Portfolio & Tools</title>
+    <title>DevPulse | AI Developer Portfolio</title>
     <meta
       name="description"
-      content="DevPulse is a futuristic developer portfolio and tool hub for web development, automation, and engineering workflows."
+      content="DevPulse is a futuristic AI developer portfolio and tool hub for automation, AI agents, and developer workflows."
     />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -14,16 +14,16 @@
         theme: {
           extend: {
             boxShadow: {
-              neon: "0 0 30px rgba(96, 165, 250, 0.45)",
-              purple: "0 0 30px rgba(168, 85, 247, 0.35)",
+              neon: "0 0 26px rgba(34, 211, 238, 0.4)",
+              green: "0 0 26px rgba(34, 197, 94, 0.35)",
             },
             colors: {
               pulse: {
                 950: "#050816",
-                900: "#0b1120",
-                800: "#111827",
-                700: "#1f2937",
-                600: "#374151",
+                900: "#08111e",
+                800: "#0f172a",
+                700: "#111827",
+                600: "#1f2937",
                 500: "#64748b",
                 400: "#94a3b8",
                 300: "#cbd5e1",
@@ -39,16 +39,15 @@
     <style>
       :root {
         --bg: #050816;
-        --bg-soft: rgba(15, 23, 42, 0.7);
-        --panel: rgba(15, 23, 42, 0.85);
-        --card: rgba(17, 24, 39, 0.9);
+        --panel: rgba(10, 18, 30, 0.82);
+        --panel-strong: rgba(15, 23, 42, 0.96);
+        --line: rgba(148, 163, 184, 0.12);
         --muted: #94a3b8;
         --text: #e2e8f0;
-        --line: rgba(148, 163, 184, 0.14);
-        --blue: #38bdf8;
-        --purple: #a78bfa;
-        --cyan: #22d3ee;
-        --green: #34d399;
+        --green: #4ade80;
+        --blue: #22d3ee;
+        --sky: #38bdf8;
+        --cyan: #67e8f9;
       }
 
       html {
@@ -57,94 +56,71 @@
 
       body {
         background:
-          radial-gradient(circle at top left, rgba(56, 189, 248, 0.15), transparent 28%),
-          radial-gradient(circle at right center, rgba(168, 85, 247, 0.16), transparent 25%),
-          linear-gradient(180deg, #050816 0%, #0b1120 100%);
+          radial-gradient(circle at top left, rgba(34, 211, 238, 0.12), transparent 25%),
+          radial-gradient(circle at right center, rgba(74, 222, 128, 0.12), transparent 22%),
+          linear-gradient(180deg, #050816 0%, #0a1120 100%);
         color: var(--text);
       }
 
       .glass {
-        background: rgba(15, 23, 42, 0.62);
-        border: 1px solid rgba(148, 163, 184, 0.14);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid rgba(148, 163, 184, 0.12);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
       }
 
       .neon-border {
-        border: 1px solid rgba(96, 165, 250, 0.35);
+        border: 1px solid rgba(74, 222, 128, 0.28);
+      }
+
+      .blue-border {
+        border: 1px solid rgba(34, 211, 238, 0.28);
       }
 
       .text-gradient {
-        background: linear-gradient(90deg, #67e8f9 0%, #a78bfa 35%, #60a5fa 100%);
+        background: linear-gradient(90deg, #67e8f9 0%, #4ade80 35%, #38bdf8 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
 
-      .btn-glow {
-        box-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
-      }
-
-      .btn-glow-purple {
-        box-shadow: 0 0 24px rgba(168, 85, 247, 0.35);
-      }
-
-      .stat-bar {
-        height: 12px;
-        border-radius: 9999px;
-        background: rgba(148, 163, 184, 0.12);
-        overflow: hidden;
-        position: relative;
-      }
-
-      .stat-fill {
-        position: absolute;
-        inset: 0 auto 0 0;
-        border-radius: inherit;
-        background: linear-gradient(90deg, #22d3ee 0%, #38bdf8 35%, #a78bfa 100%);
-        box-shadow: 0 0 16px rgba(96, 165, 250, 0.6);
-      }
-
       .grid-pattern {
         background-image:
-          linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
-        background-size: 26px 26px;
+          linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+        background-size: 24px 24px;
       }
 
-      .avatar-shimmer {
-        background: linear-gradient(135deg, rgba(103, 232, 249, 0.2), rgba(167, 139, 250, 0.25), rgba(59, 130, 246, 0.2));
-        position: relative;
-        overflow: hidden;
+      .terminal {
+        background: linear-gradient(180deg, rgba(2, 6, 23, 0.96), rgba(9, 16, 28, 0.96));
+        border: 1px solid rgba(103, 232, 249, 0.18);
+        box-shadow: inset 0 0 18px rgba(34, 211, 238, 0.06);
       }
 
-      .avatar-shimmer::after {
-        content: "";
-        position: absolute;
-        inset: -30%;
-        background: linear-gradient(
-          120deg,
-          transparent 20%,
-          rgba(255, 255, 255, 0.25) 50%,
-          transparent 80%
-        );
-        transform: translateX(-100%) rotate(12deg);
-        animation: shimmer 3.5s infinite;
+      .log-line {
+        font-family: "SFMono-Regular", Consolas, monospace;
+        border-left: 2px solid rgba(74, 222, 128, 0.25);
+        padding-left: 10px;
+        animation: fadeIn 0.3s ease;
       }
 
-      @keyframes shimmer {
-        0% { transform: translateX(-120%) rotate(12deg); }
-        100% { transform: translateX(120%) rotate(12deg); }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(5px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .avatar-glow {
+        background: linear-gradient(135deg, rgba(74, 222, 128, 0.18), rgba(34, 211, 238, 0.18), rgba(59, 130, 246, 0.16));
       }
     </style>
   </head>
   <body class="antialiased selection:bg-cyan-500/30">
-    <div class="grid-pattern absolute inset-0 -z-10 opacity-35"></div>
+    <div class="grid-pattern absolute inset-0 -z-10 opacity-30"></div>
 
-    <header class="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-xl">
+    <header class="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/75 backdrop-blur-xl">
       <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <div class="flex items-center gap-3">
-          <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-violet-500 shadow-neon">
+          <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 shadow-green">
             <span class="text-lg font-black text-slate-950">D</span>
           </div>
           <div>
@@ -153,7 +129,7 @@
         </div>
 
         <div class="hidden items-center gap-8 text-sm text-slate-300 md:flex">
-          <a href="#about" class="transition hover:text-cyan-300">About</a>
+          <a href="#about" class="transition hover:text-emerald-300">About</a>
           <a href="#tools" class="transition hover:text-cyan-300">Tools</a>
           <a href="#profile" class="transition hover:text-cyan-300">Profile</a>
         </div>
@@ -162,7 +138,7 @@
           href="https://www.instagram.com/abhimanu_011/"
           target="_blank"
           rel="noreferrer"
-          class="inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-gradient-to-r from-cyan-500/15 via-sky-500/10 to-violet-500/15 px-4 py-2 text-sm font-semibold text-cyan-100 transition hover:scale-[1.02] hover:border-cyan-300 hover:shadow-neon"
+          class="inline-flex items-center gap-2 rounded-full border border-emerald-400/35 bg-gradient-to-r from-emerald-500/15 via-cyan-500/10 to-sky-500/15 px-4 py-2 text-sm font-semibold text-emerald-100 transition hover:scale-[1.02] hover:border-emerald-300 hover:shadow-neon"
         >
           <span>◎</span>
           <span>Follow Me on Instagram</span>
@@ -171,20 +147,20 @@
     </header>
 
     <main class="mx-auto max-w-6xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
-      <section id="about" class="grid items-center gap-10 py-8 lg:grid-cols-[1.2fr_0.8fr] lg:py-16">
+      <section id="about" class="grid items-center gap-10 py-8 lg:grid-cols-[1.15fr_0.85fr] lg:py-16">
         <div class="relative">
-          <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-violet-500/10 px-3 py-1 text-xs font-medium tracking-[0.2em] text-violet-200 uppercase">
-            <span class="h-2 w-2 rounded-full bg-violet-400 shadow-[0_0_12px_rgba(167,139,250,1)]"></span>
-            Web Developer • Automation Enthusiast
+          <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-500/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-cyan-200">
+            <span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(74,222,128,1)]"></span>
+            AI Agents • Software Tools
           </div>
 
           <h1 class="max-w-xl text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
-            Build fast.
-            <span class="text-gradient">Ship smarter.</span>
+            Build AI systems.
+            <span class="text-gradient">Ship faster.</span>
           </h1>
 
           <p class="mt-6 max-w-xl text-lg leading-8 text-slate-300">
-            I craft sleek digital experiences, streamline workflows, and turn complex ideas into simple, scalable products that feel effortless for users.
+            I design software systems, AI automation workflows, and developer tools that turn ideas into reliable, scalable product experiences.
           </p>
 
           <div class="mt-8 flex flex-wrap items-center gap-4">
@@ -192,38 +168,37 @@
               href="https://github.com/AbhimanuKD"
               target="_blank"
               rel="noreferrer"
-              class="btn-glow inline-flex items-center rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3 text-sm font-bold text-slate-950 transition hover:scale-[1.02]"
+              class="inline-flex items-center rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 px-6 py-3 text-sm font-bold text-slate-950 transition hover:scale-[1.02] hover:shadow-neon"
             >
               View Github
             </a>
             <a
               href="#tools"
-              class="inline-flex items-center rounded-full border border-slate-600 bg-slate-900/60 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/50 hover:text-cyan-200"
+              class="inline-flex items-center rounded-full border border-slate-700 bg-slate-900/60 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/50 hover:text-cyan-200"
             >
               Explore Tools
             </a>
           </div>
 
-          <div class="mt-10 flex flex-wrap gap-6 text-sm text-slate-300">
+          <div class="mt-10 flex flex-wrap gap-7 text-sm text-slate-300">
             <div>
-              <div class="text-2xl font-black text-white">4+</div>
-              <div class="text-slate-400">Years building</div>
+              <div class="text-2xl font-black text-white">8+</div>
+              <div class="text-slate-400">Automation stacks</div>
             </div>
             <div>
-              <div class="text-2xl font-black text-white">18+</div>
-              <div class="text-slate-400">Projects shipped</div>
+              <div class="text-2xl font-black text-white">30+</div>
+              <div class="text-slate-400">Smart workflows</div>
             </div>
             <div>
               <div class="text-2xl font-black text-white">24/7</div>
-              <div class="text-slate-400">Automation mindset</div>
+              <div class="text-slate-400">Agent mindset</div>
             </div>
           </div>
         </div>
 
         <div class="relative">
           <div class="glass neon-border relative overflow-hidden rounded-3xl p-5 shadow-neon">
-            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-violet-500/10"></div>
-
+            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-cyan-500/10"></div>
             <div class="relative">
               <div class="mb-6 flex items-center justify-between">
                 <div class="flex items-center gap-2">
@@ -231,64 +206,64 @@
                   <div class="h-3 w-3 rounded-full bg-amber-400"></div>
                   <div class="h-3 w-3 rounded-full bg-emerald-400"></div>
                 </div>
-                <div class="rounded-full border border-slate-700 bg-slate-950/60 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                <div class="rounded-full border border-slate-700 bg-slate-950/70 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-cyan-300">
                   live
                 </div>
               </div>
 
-              <div class="rounded-2xl border border-slate-700 bg-slate-950/70 p-5">
+              <div class="rounded-2xl border border-slate-700 bg-slate-950/80 p-5">
                 <div class="mb-4 flex items-center justify-between">
                   <div>
-                    <div class="text-xs uppercase tracking-[0.2em] text-slate-400">Focus</div>
-                    <div class="mt-2 text-xl font-bold text-white">Product Velocity</div>
+                    <div class="text-xs uppercase tracking-[0.2em] text-slate-400">System</div>
+                    <div class="mt-2 text-xl font-bold text-white">AI Agent Pulse</div>
                   </div>
-                  <div class="rounded-lg bg-cyan-500/10 px-3 py-2 text-sm font-semibold text-cyan-300">94%</div>
+                  <div class="rounded-lg bg-emerald-500/10 px-3 py-2 text-sm font-semibold text-emerald-300">96%</div>
                 </div>
 
                 <div class="space-y-4">
                   <div>
                     <div class="mb-2 flex justify-between text-xs text-slate-300">
-                      <span>UI Performance</span>
-                      <span>92%</span>
+                      <span>Context Engine</span>
+                      <span>91%</span>
                     </div>
-                    <div class="stat-bar">
-                      <div class="stat-fill" style="width: 92%;"></div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <div class="mb-2 flex justify-between text-xs text-slate-300">
-                      <span>Automation</span>
-                      <span>87%</span>
-                    </div>
-                    <div class="stat-bar">
-                      <div class="stat-fill" style="width: 87%;"></div>
+                    <div class="h-2.5 overflow-hidden rounded-full bg-slate-800">
+                      <div class="h-full w-[91%] rounded-full bg-gradient-to-r from-emerald-400 via-cyan-400 to-sky-500"></div>
                     </div>
                   </div>
 
                   <div>
                     <div class="mb-2 flex justify-between text-xs text-slate-300">
-                      <span>System Stability</span>
-                      <span>96%</span>
+                      <span>Automation Sync</span>
+                      <span>88%</span>
                     </div>
-                    <div class="stat-bar">
-                      <div class="stat-fill" style="width: 96%;"></div>
+                    <div class="h-2.5 overflow-hidden rounded-full bg-slate-800">
+                      <div class="h-full w-[88%] rounded-full bg-gradient-to-r from-emerald-400 via-cyan-400 to-sky-500"></div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div class="mb-2 flex justify-between text-xs text-slate-300">
+                      <span>Model Health</span>
+                      <span>97%</span>
+                    </div>
+                    <div class="h-2.5 overflow-hidden rounded-full bg-slate-800">
+                      <div class="h-full w-[97%] rounded-full bg-gradient-to-r from-emerald-400 via-cyan-400 to-sky-500"></div>
                     </div>
                   </div>
                 </div>
 
-                <div class="mt-6 grid grid-cols-3 gap-3">
-                  <div class="rounded-xl border border-slate-700 bg-slate-900/70 p-3">
-                    <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">Builds</div>
-                    <div class="mt-2 text-xl font-black text-white">12</div>
+                <div class="mt-6 grid grid-cols-3 gap-3 text-center">
+                  <div class="rounded-xl border border-slate-700 bg-slate-900/80 p-3">
+                    <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">Agents</div>
+                    <div class="mt-2 text-xl font-black text-white">14</div>
                   </div>
-                  <div class="rounded-xl border border-slate-700 bg-slate-900/70 p-3">
-                    <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">APIs</div>
-                    <div class="mt-2 text-xl font-black text-white">28</div>
+                  <div class="rounded-xl border border-slate-700 bg-slate-900/80 p-3">
+                    <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">Flows</div>
+                    <div class="mt-2 text-xl font-black text-white">27</div>
                   </div>
-                  <div class="rounded-xl border border-slate-700 bg-slate-900/70 p-3">
-                    <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">UX</div>
-                    <div class="mt-2 text-xl font-black text-white">A+</div>
+                  <div class="rounded-xl border border-slate-700 bg-slate-900/80 p-3">
+                    <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">Latency</div>
+                    <div class="mt-2 text-xl font-black text-white">0.8s</div>
                   </div>
                 </div>
               </div>
@@ -298,121 +273,62 @@
       </section>
 
       <section id="tools" class="py-10">
-        <div class="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <p class="mb-2 text-sm font-medium uppercase tracking-[0.22em] text-cyan-300">Dynamic tools</p>
-            <h2 class="text-3xl font-black text-white">Build, compute, optimize.</h2>
-          </div>
+        <div class="mb-8">
+          <p class="mb-2 text-sm font-medium uppercase tracking-[0.23em] text-emerald-300">Dynamic AI tools</p>
+          <h2 class="text-3xl font-black text-white">AI Agent workspace</h2>
         </div>
 
         <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div class="glass neon-border rounded-3xl p-5 shadow-neon">
+          <div class="glass blue-border rounded-3xl p-5 shadow-neon">
             <div class="mb-5 flex items-center justify-between">
               <div>
-                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Tool</p>
-                <h3 class="mt-2 text-2xl font-bold text-white">Focus Planner</h3>
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">AI Tool</p>
+                <h3 class="mt-2 text-2xl font-bold text-white">Agent Prompt Builder</h3>
               </div>
               <div class="rounded-full border border-cyan-400/20 bg-cyan-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">
-                Smart
+                Ready
               </div>
             </div>
 
-            <div class="rounded-2xl border border-slate-700 bg-slate-950/80 p-4">
-              <div class="flex items-center justify-between gap-3">
-                <div>
-                  <div class="text-xs uppercase tracking-[0.18em] text-slate-400">Current mode</div>
-                  <div id="modeLabel" class="mt-2 text-2xl font-black text-white">Deep Work</div>
-                </div>
-                <div class="rounded-full border border-violet-400/20 bg-violet-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-violet-200">
-                  <span id="focusValue">72%</span>
-                </div>
-              </div>
+            <div class="mb-4 flex flex-wrap gap-2">
+              <button class="template-btn rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-emerald-200 transition hover:bg-emerald-500/20" data-template="web">Web Scraper</button>
+              <button class="template-btn rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-cyan-200 transition hover:bg-cyan-500/20" data-template="code">Code Optimizer</button>
+              <button class="template-btn rounded-full border border-violet-400/30 bg-violet-500/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-violet-200 transition hover:bg-violet-500/20" data-template="bot">Automation Bot</button>
+            </div>
 
-              <div class="mt-6">
-                <div class="mb-2 flex items-center justify-between text-sm text-slate-300">
-                  <span>Focus intensity</span>
-                  <span id="focusDisplay">72%</span>
-                </div>
-                <input id="focusSlider" type="range" min="10" max="100" value="72" class="w-full accent-cyan-400" />
-              </div>
+            <textarea
+              id="promptOutput"
+              rows="9"
+              class="w-full rounded-2xl border border-slate-700 bg-slate-950/90 p-4 text-sm leading-6 text-slate-100 outline-none ring-0 focus:border-cyan-400/60"
+            >You are an AI web scraper agent. Extract product data from target listings, structure the output into JSON, and summarize key trends with confidence scoring and anomalies.</textarea>
 
-              <div class="mt-6 grid grid-cols-2 gap-3">
-                <button class="planner-btn rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-3 text-left text-sm font-semibold text-slate-200 hover:border-cyan-400/40" data-mode="Deep Work">Deep Work</button>
-                <button class="planner-btn rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-3 text-left text-sm font-semibold text-slate-200 hover:border-cyan-400/40" data-mode="Build Sprint">Build Sprint</button>
-                <button class="planner-btn rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-3 text-left text-sm font-semibold text-slate-200 hover:border-cyan-400/40" data-mode="Code Review">Code Review</button>
-                <button class="planner-btn rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-3 text-left text-sm font-semibold text-slate-200 hover:border-cyan-400/40" data-mode="Bug Hunt">Bug Hunt</button>
-              </div>
-
-              <div class="mt-6 rounded-2xl border border-cyan-400/20 bg-cyan-500/10 p-4">
-                <div class="text-xs uppercase tracking-[0.18em] text-cyan-200">Suggested output</div>
-                <div id="outputSummary" class="mt-2 text-lg font-bold text-white">3 feature modules • 1 automation flow • 90 min focus block</div>
-              </div>
+            <div class="mt-4 flex items-center justify-between gap-3">
+              <button
+                id="copyPrompt"
+                class="inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-2 text-sm font-semibold text-cyan-100 transition hover:bg-cyan-500/20"
+              >
+                Copy Prompt
+              </button>
+              <span class="text-xs uppercase tracking-[0.2em] text-slate-400">Prompt tuned</span>
             </div>
           </div>
 
-          <div class="glass neon-border rounded-3xl p-5 shadow-purple">
+          <div class="glass neon-border rounded-3xl p-5 shadow-green">
             <div class="mb-5 flex items-center justify-between">
               <div>
-                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">System</p>
-                <h3 class="mt-2 text-2xl font-bold text-white">Quick-Stats</h3>
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Live stream</p>
+                <h3 class="mt-2 text-2xl font-bold text-white">API Console Log</h3>
               </div>
               <div class="flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-300">
                 <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
-                Live
+                Streaming
               </div>
             </div>
 
-            <div class="space-y-5">
-              <div class="rounded-2xl border border-slate-700 bg-slate-950/70 p-4">
-                <div class="mb-2 flex items-center justify-between">
-                  <span class="text-sm text-slate-300">CPU Load</span>
-                  <span id="cpuValue" class="text-sm font-bold text-cyan-300">72%</span>
-                </div>
-                <div class="stat-bar">
-                  <div id="cpuBar" class="stat-fill" style="width: 72%;"></div>
-                </div>
-              </div>
-
-              <div class="rounded-2xl border border-slate-700 bg-slate-950/70 p-4">
-                <div class="mb-2 flex items-center justify-between">
-                  <span class="text-sm text-slate-300">Memory</span>
-                  <span id="memoryValue" class="text-sm font-bold text-violet-300">81%</span>
-                </div>
-                <div class="stat-bar">
-                  <div id="memoryBar" class="stat-fill" style="width: 81%;"></div>
-                </div>
-              </div>
-
-              <div class="rounded-2xl border border-slate-700 bg-slate-950/70 p-4">
-                <div class="mb-2 flex items-center justify-between">
-                  <span class="text-sm text-slate-300">Build Queue</span>
-                  <span id="queueValue" class="text-sm font-bold text-emerald-300">63%</span>
-                </div>
-                <div class="stat-bar">
-                  <div id="queueBar" class="stat-fill" style="width: 63%;"></div>
-                </div>
-              </div>
-
-              <div class="rounded-2xl border border-slate-700 bg-slate-950/70 p-4">
-                <div class="mb-2 flex items-center justify-between">
-                  <span class="text-sm text-slate-300">Deploy Sync</span>
-                  <span id="deployValue" class="text-sm font-bold text-cyan-300">88%</span>
-                </div>
-                <div class="stat-bar">
-                  <div id="deployBar" class="stat-fill" style="width: 88%;"></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="mt-6 grid grid-cols-2 gap-3">
-              <div class="rounded-xl border border-slate-700 bg-slate-900/70 p-3">
-                <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">Uptime</div>
-                <div class="mt-2 text-xl font-black text-white">99.98%</div>
-              </div>
-              <div class="rounded-xl border border-slate-700 bg-slate-900/70 p-3">
-                <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">Network</div>
-                <div class="mt-2 text-xl font-black text-white">1.2 Gbps</div>
-              </div>
+            <div id="consoleStream" class="terminal h-[330px] overflow-hidden rounded-2xl p-4 text-sm leading-6 text-slate-200">
+              <div class="log-line text-emerald-300">[system] Initializing DevPulse agent runtime...</div>
+              <div class="log-line text-cyan-300">[network] Establishing secure connection to model gateway...</div>
+              <div class="log-line text-emerald-300">[agent] Loading prompt context and vector memory...</div>
             </div>
           </div>
         </div>
@@ -421,51 +337,51 @@
       <section id="profile" class="py-12">
         <div class="flex items-center justify-center">
           <div class="glass neon-border relative w-full max-w-lg overflow-hidden rounded-[28px] p-6 shadow-neon">
-            <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/10 via-transparent to-violet-500/10"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-cyan-500/10"></div>
 
             <div class="relative">
               <div class="mb-4 flex items-center justify-between">
                 <div class="text-xs uppercase tracking-[0.24em] text-slate-400">Profile</div>
-                <div class="rounded-full border border-slate-700 bg-slate-900/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-violet-200">
+                <div class="rounded-full border border-slate-700 bg-slate-900/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-200">
                   Available
                 </div>
               </div>
 
               <div class="flex items-center gap-4">
-                <div class="avatar-shimmer flex h-20 w-20 items-center justify-center rounded-2xl border border-cyan-400/30 bg-gradient-to-br from-cyan-400/30 via-violet-500/20 to-blue-500/20 text-2xl font-black text-white shadow-neon">
+                <div class="avatar-glow flex h-20 w-20 items-center justify-center rounded-2xl border border-emerald-400/30 text-2xl font-black text-white shadow-neon">
                   AK
                 </div>
 
                 <div>
                   <h3 class="text-2xl font-black text-white">Abhimanu Kumar</h3>
-                  <p class="mt-1 text-sm text-cyan-300">Web Developer • Automation Enthusiast</p>
+                  <p class="mt-1 text-sm text-emerald-300">Developer • AI Agents • Tool Builder</p>
                 </div>
               </div>
 
               <div class="mt-6 space-y-3 text-sm text-slate-300">
-                <div class="flex items-center justify-between rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2">
+                <div class="flex items-center justify-between rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-2">
                   <span>Specialty</span>
-                  <span class="font-semibold text-white">Frontend Systems</span>
+                  <span class="font-semibold text-white">AI SaaS Systems</span>
                 </div>
-                <div class="flex items-center justify-between rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2">
+                <div class="flex items-center justify-between rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-2">
                   <span>Focus</span>
-                  <span class="font-semibold text-white">UX + Automation</span>
+                  <span class="font-semibold text-white">Automation + UX</span>
                 </div>
-                <div class="flex items-center justify-between rounded-xl border border-slate-700 bg-slate-900/70 px-3 py-2">
+                <div class="flex items-center justify-between rounded-xl border border-slate-700 bg-slate-900/80 px-3 py-2">
                   <span>Location</span>
                   <span class="font-semibold text-white">India</span>
                 </div>
               </div>
 
-              <div class="mt-6 rounded-2xl border border-cyan-400/20 bg-cyan-500/10 p-4 text-sm text-cyan-100">
-                Turning complex workflows into elegant digital experiences — one interaction at a time.
+              <div class="mt-6 rounded-2xl border border-emerald-400/20 bg-emerald-500/10 p-4 text-sm text-emerald-100">
+                I translate complex workflows into elegant AI-powered tools that feel effortless for users.
               </div>
 
               <a
                 href="https://www.instagram.com/abhimanu_011/"
                 target="_blank"
                 rel="noreferrer"
-                class="btn-glow-purple mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-violet-500 to-cyan-500 px-5 py-3 text-base font-bold text-white transition hover:scale-[1.01]"
+                class="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-400 to-cyan-500 px-5 py-3 text-base font-bold text-slate-950 transition hover:scale-[1.01] hover:shadow-neon"
               >
                 Let's Connect
               </a>
@@ -478,81 +394,86 @@
     <footer class="border-t border-slate-800/80 bg-slate-950/80">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-6 text-sm text-slate-400 sm:px-6 lg:px-8">
         <div>© 2026 DevPulse</div>
-        <div>Built for curious minds and fast-moving ideas.</div>
+        <div>Automating ideas into tools.</div>
       </div>
     </footer>
 
     <script>
-      const focusSlider = document.getElementById("focusSlider");
-      const focusDisplay = document.getElementById("focusDisplay");
-      const focusValue = document.getElementById("focusValue");
-      const modeLabel = document.getElementById("modeLabel");
-      const outputSummary = document.getElementById("outputSummary");
-      const plannerButtons = document.querySelectorAll(".planner-btn");
+      const promptOutput = document.getElementById("promptOutput");
+      const copyPromptBtn = document.getElementById("copyPrompt");
+      const consoleStream = document.getElementById("consoleStream");
+      const templateButtons = document.querySelectorAll(".template-btn");
 
-      let activeMode = "Deep Work";
+      const templates = {
+        web: `You are an AI web scraper agent. Extract product data from target listings, structure the output into JSON, and summarize key trends with confidence scoring and anomalies.`,
+        code: `You are an AI code optimizer. Review the application logic, remove bottlenecks, improve maintainability, and suggest a cleaner architecture with exact refactoring steps.`,
+        bot: `You are an AI automation bot. Create resilient workflow logic, trigger orchestration steps, validate outputs, and generate a concise execution summary for human review.`
+      };
 
-      function updatePlanner() {
-        const intensity = Number(focusSlider.value);
-        focusDisplay.textContent = `${intensity}%`;
-        focusValue.textContent = `${intensity}%`;
-
-        const modules = Math.max(1, Math.round(intensity / 24));
-        const automation = Math.max(1, Math.round((100 - intensity) / 18));
-        const minutes = Math.max(45, Math.round(intensity * 1.2));
-
-        outputSummary.textContent = `${modules} feature modules • ${automation} automation flow • ${minutes} min focus block`;
-
-        if (intensity >= 80) {
-          modeLabel.textContent = activeMode === "Bug Hunt" ? "Bug Hunt" : "Deep Work";
-        } else if (intensity >= 60) {
-          modeLabel.textContent = activeMode === "Build Sprint" ? "Build Sprint" : "Focus Mode";
-        } else if (intensity >= 35) {
-          modeLabel.textContent = activeMode === "Code Review" ? "Code Review" : "Iteration";
-        } else {
-          modeLabel.textContent = activeMode === "Deep Work" ? "Deep Work" : "Warmup";
-        }
-      }
-
-      plannerButtons.forEach((button) => {
+      templateButtons.forEach((button) => {
         button.addEventListener("click", () => {
-          activeMode = button.dataset.mode;
-          modeLabel.textContent = activeMode;
-
-          const presetMap = {
-            "Deep Work": 82,
-            "Build Sprint": 74,
-            "Code Review": 56,
-            "Bug Hunt": 68,
-          };
-
-          focusSlider.value = presetMap[activeMode] || 72;
-          updatePlanner();
+          const key = button.dataset.template;
+          promptOutput.value = templates[key];
         });
       });
 
-      focusSlider.addEventListener("input", updatePlanner);
-      updatePlanner();
+      copyPromptBtn.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(promptOutput.value);
+          copyPromptBtn.textContent = "Copied";
+          setTimeout(() => {
+            copyPromptBtn.textContent = "Copy Prompt";
+          }, 1200);
+        } catch (error) {
+          copyPromptBtn.textContent = "Copy failed";
+        }
+      });
 
-      const stats = [
-        { key: "cpu", value: 72, bar: document.getElementById("cpuBar"), label: document.getElementById("cpuValue") },
-        { key: "memory", value: 81, bar: document.getElementById("memoryBar"), label: document.getElementById("memoryValue") },
-        { key: "queue", value: 63, bar: document.getElementById("queueBar"), label: document.getElementById("queueValue") },
-        { key: "deploy", value: 88, bar: document.getElementById("deployBar"), label: document.getElementById("deployValue") },
+      const logMessages = [
+        "[system] Initializing DevPulse agent runtime...",
+        "[network] Establishing secure connection to model gateway...",
+        "[agent] Loading prompt context and vector memory...",
+        "[executor] Running workflow orchestration sequence...",
+        "[parser] Structuring agent output for downstream tasks...",
+        "[signal] Connection successful — model ready for inference.",
+        "[tool] Executing script baseline validation...",
+        "[ops] Memory cache synced with the latest context window.",
+        "[audit] Guardrails active — anomaly detection enabled.",
+        "[terminal] Response generated with low-latency execution path.",
+        "[agent] Preparing final task summary and command queue...",
+        "[done] Deployment prepared for review.",
       ];
 
-      function animateStats() {
-        stats.forEach((item) => {
-          const min = Math.max(35, item.value - 18);
-          const max = Math.min(99, item.value + 20);
-          const nextValue = Math.floor(Math.random() * (max - min + 1)) + min;
-          item.value = nextValue;
-          item.bar.style.width = `${nextValue}%`;
-          item.label.textContent = `${nextValue}%`;
-        });
+      let logIndex = 0;
+
+      function addLogLine() {
+        const line = document.createElement("div");
+        line.className = "log-line my-1 text-xs sm:text-sm";
+
+        const message = logMessages[logIndex % logMessages.length];
+        const color = message.includes("[system]") || message.includes("[done]")
+          ? "text-emerald-300"
+          : message.includes("[network]") || message.includes("[signal]")
+          ? "text-cyan-300"
+          : message.includes("[tool]") || message.includes("[executor]")
+          ? "text-violet-300"
+          : "text-slate-200";
+
+        line.classList.add(color);
+        line.textContent = message;
+
+        const firstChild = consoleStream.firstChild;
+        consoleStream.insertBefore(line, firstChild);
+
+        const lines = consoleStream.querySelectorAll(".log-line");
+        if (lines.length > 10) {
+          lines[lines.length - 1].remove();
+        }
+
+        logIndex += 1;
       }
 
-      setInterval(animateStats, 2200);
+      setInterval(addLogLine, 1200);
     </script>
   </body>
 </html>
