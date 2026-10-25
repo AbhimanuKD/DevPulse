@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DevPulse | AI Developer Portfolio</title>
+    <meta name="theme-color" content="#050816" />
     <meta
       name="description"
       content="DevPulse is a futuristic AI developer portfolio and tool hub for automation, AI agents, and developer workflows."
     />
+    <title>DevPulse | AI Developer Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -62,6 +63,11 @@
         color: var(--text);
       }
 
+      section,
+      footer {
+        scroll-margin-top: 96px;
+      }
+
       .glass {
         background: rgba(15, 23, 42, 0.7);
         border: 1px solid rgba(148, 163, 184, 0.12);
@@ -104,11 +110,13 @@
         animation: fadeIn 0.35s ease;
       }
 
-      .project-card, .tool-card {
+      .project-card,
+      .tool-card {
         transition: transform 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
       }
 
-      .project-card:hover, .tool-card:hover {
+      .project-card:hover,
+      .tool-card:hover {
         transform: translateY(-4px);
       }
 
@@ -122,9 +130,23 @@
         color: #dffcff;
       }
 
+      .focus-ring:focus-visible,
+      a:focus-visible,
+      button:focus-visible,
+      textarea:focus-visible {
+        outline: 2px solid rgba(103, 232, 249, 0.9);
+        outline-offset: 3px;
+      }
+
       @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(5px); }
-        to { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(5px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .avatar-glow {
@@ -136,8 +158,13 @@
       }
 
       @keyframes blink {
-        0%, 100% { opacity: 0.3; }
-        50% { opacity: 1; }
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 1;
+        }
       }
 
       .os-shell {
@@ -147,13 +174,38 @@
       .window-bar {
         background: rgba(15, 23, 42, 0.75);
       }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
     </style>
   </head>
   <body class="antialiased selection:bg-cyan-500/30">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-sm focus:text-cyan-200"
+    >
+      Skip to content
+    </a>
+
     <div class="grid-pattern absolute inset-0 -z-10 opacity-30"></div>
 
     <header class="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/75 backdrop-blur-xl">
-      <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <nav
+        class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
+        aria-label="Main navigation"
+      >
         <div class="flex items-center gap-3">
           <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-cyan-500 shadow-green">
             <span class="text-lg font-black text-slate-950">D</span>
@@ -174,20 +226,21 @@
           href="https://www.instagram.com/abhimanu_011/"
           target="_blank"
           rel="noreferrer"
-          class="inline-flex items-center gap-2 rounded-full border border-emerald-400/35 bg-gradient-to-r from-emerald-500/15 via-cyan-500/10 to-sky-500/15 px-4 py-2 text-sm font-semibold text-emerald-100 transition hover:scale-[1.02] hover:border-emerald-300 hover:shadow-neon"
+          class="inline-flex items-center gap-2 rounded-full border border-emerald-400/35 bg-gradient-to-r from-emerald-500/15 via-cyan-500/10 to-sky-500/15 px-4 py-2 text-sm font-semibold text-emerald-100 transition hover:border-emerald-300/60 hover:bg-emerald-500/15"
+          aria-label="Follow DevPulse on Instagram"
         >
-          <span>◎</span>
-          <span>Follow Me on Instagram</span>
+          <span aria-hidden="true">◎</span>
+          <span>Follow Me</span>
         </a>
       </nav>
     </header>
 
-    <main class="mx-auto max-w-6xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
+    <main id="main-content" class="mx-auto max-w-6xl px-4 pb-20 pt-10 sm:px-6 lg:px-8">
       <section id="about" class="grid items-center gap-10 py-8 lg:grid-cols-[1.15fr_0.85fr] lg:py-16">
         <div class="relative">
           <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-400/25 bg-cyan-500/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-cyan-200">
             <span class="pulse-dot h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(74,222,128,1)]"></span>
-            AI Agents • Software Tools
+            Demo concept • AI Agents • Software Tools
           </div>
 
           <h1 class="max-w-xl text-4xl font-black leading-tight text-white sm:text-5xl lg:text-6xl">
@@ -206,13 +259,13 @@
               rel="noreferrer"
               class="inline-flex items-center rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 px-6 py-3 text-sm font-bold text-slate-950 transition hover:scale-[1.02] hover:shadow-neon"
             >
-              View Github
+              View GitHub
             </a>
             <a
               href="#tools"
               class="inline-flex items-center rounded-full border border-slate-700 bg-slate-900/60 px-6 py-3 text-sm font-semibold text-slate-100 transition hover:border-cyan-400/50 hover:text-cyan-200"
             >
-              Explore Tools
+              Explore Demo Tools
             </a>
           </div>
 
@@ -237,7 +290,7 @@
             <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-cyan-500/10"></div>
             <div class="relative">
               <div class="mb-6 flex items-center justify-between">
-                <div class="flex items-center gap-2">
+                <div class="flex items-center gap-2" aria-label="Application status indicators">
                   <div class="h-3 w-3 rounded-full bg-rose-400"></div>
                   <div class="h-3 w-3 rounded-full bg-amber-400"></div>
                   <div class="h-3 w-3 rounded-full bg-emerald-400"></div>
@@ -308,7 +361,7 @@
         </div>
       </section>
 
-      <section id="tools" class="py-8 sm:py-10">
+      <section id="tools" class="py-8 sm:py-10" aria-label="AI tool section">
         <div class="mb-8">
           <p class="mb-2 text-sm font-medium uppercase tracking-[0.23em] text-emerald-300">Dynamic AI tools</p>
           <h2 class="text-3xl font-black text-white">AI Agent workspace</h2>
@@ -316,7 +369,7 @@
 
         <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div class="glass blue-border rounded-3xl p-5 shadow-neon">
-            <div class="mb-5 flex items-center justify-between">
+            <div class="mb-5 flex items-center justify-between gap-4">
               <div>
                 <p class="text-xs uppercase tracking-[0.24em] text-slate-400">AI Tool</p>
                 <h3 class="mt-2 text-2xl font-bold text-white">Agent Prompt Builder</h3>
@@ -327,21 +380,29 @@
             </div>
 
             <div class="mb-4 flex flex-wrap gap-2">
-              <button class="template-btn rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-emerald-200 transition hover:bg-emerald-500/20" data-template="web">Web Scraper</button>
-              <button class="template-btn rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-cyan-200 transition hover:bg-cyan-500/20" data-template="code">Code Optimizer</button>
-              <button class="template-btn rounded-full border border-violet-400/30 bg-violet-500/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-violet-200 transition hover:bg-violet-500/20" data-template="bot">Automation Bot</button>
+              <button type="button" class="template-btn focus-ring rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-emerald-200 transition hover:bg-emerald-500/20" data-template="web">
+                Web Scraper
+              </button>
+              <button type="button" class="template-btn focus-ring rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-cyan-200 transition hover:bg-cyan-500/20" data-template="code">
+                Code Optimizer
+              </button>
+              <button type="button" class="template-btn focus-ring rounded-full border border-violet-400/30 bg-violet-500/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-violet-200 transition hover:bg-violet-500/20" data-template="bot">
+                Automation Bot
+              </button>
             </div>
 
             <textarea
               id="promptOutput"
               rows="9"
               class="w-full rounded-2xl border border-slate-700 bg-slate-950/90 p-4 text-sm leading-6 text-slate-100 outline-none ring-0 focus:border-cyan-400/60"
+              aria-label="AI prompt output"
             >You are an AI web scraper agent. Extract product data from target listings, structure the output into JSON, and summarize key trends with confidence scoring and anomalies.</textarea>
 
             <div class="mt-4 flex items-center justify-between gap-3">
               <button
                 id="copyPrompt"
-                class="inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-2 text-sm font-semibold text-cyan-100 transition hover:bg-cyan-500/20"
+                type="button"
+                class="focus-ring inline-flex items-center rounded-full border border-cyan-400/30 bg-cyan-500/10 px-4 py-2 text-sm font-semibold text-cyan-100 transition hover:bg-cyan-500/20"
               >
                 Copy Prompt
               </button>
@@ -361,7 +422,12 @@
               </div>
             </div>
 
-            <div id="consoleStream" class="terminal h-[332px] overflow-hidden rounded-2xl p-4 text-sm leading-6 text-slate-200">
+            <div
+              id="consoleStream"
+              class="terminal h-[332px] overflow-hidden rounded-2xl p-4 text-sm leading-6 text-slate-200"
+              aria-live="polite"
+              aria-label="Console stream updates"
+            >
               <div class="log-line text-emerald-300">[system] Initializing DevPulse agent runtime...</div>
               <div class="log-line text-cyan-300">[network] Establishing secure connection to model gateway...</div>
               <div class="log-line text-emerald-300">[agent] Loading prompt context and vector memory...</div>
@@ -370,17 +436,25 @@
         </div>
       </section>
 
-      <section id="projects" class="py-10">
+      <section id="projects" class="py-10" aria-label="Projects section">
         <div class="mb-8 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p class="mb-2 text-sm font-medium uppercase tracking-[0.24em] text-cyan-300">Projects</p>
             <h2 class="text-3xl font-black text-white">Built for automation and product velocity</h2>
           </div>
-          <div class="flex flex-wrap gap-2">
-            <button class="tag active rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-cyan-100" data-filter="all">All</button>
-            <button class="tag rounded-full border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-slate-200" data-filter="ai">AI</button>
-            <button class="tag rounded-full border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-slate-200" data-filter="tools">Tools</button>
-            <button class="tag rounded-full border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-slate-200" data-filter="systems">Systems</button>
+          <div class="flex flex-wrap gap-2" aria-label="Project filters">
+            <button type="button" class="tag active rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-cyan-100" data-filter="all" aria-pressed="true">
+              All
+            </button>
+            <button type="button" class="tag rounded-full border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-slate-200" data-filter="ai" aria-pressed="false">
+              AI
+            </button>
+            <button type="button" class="tag rounded-full border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-slate-200" data-filter="tools" aria-pressed="false">
+              Tools
+            </button>
+            <button type="button" class="tag rounded-full border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-semibold uppercase tracking-[0.12em] text-slate-200" data-filter="systems" aria-pressed="false">
+              Systems
+            </button>
           </div>
         </div>
 
@@ -426,7 +500,7 @@
         </div>
       </section>
 
-      <section class="py-8">
+      <section class="py-8" aria-label="Core values section">
         <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           <div class="glass rounded-3xl p-5 border border-slate-800/70">
             <div class="mb-3 text-xs uppercase tracking-[0.2em] text-cyan-300">Core</div>
@@ -451,7 +525,7 @@
         </div>
       </section>
 
-      <section class="py-8">
+      <section class="py-8" aria-label="Tool stack section">
         <div class="grid gap-6 lg:grid-cols-3">
           <div class="tool-card glass rounded-3xl p-5 border border-slate-800/70">
             <div class="mb-3 text-xs uppercase tracking-[0.2em] text-cyan-300">AI</div>
@@ -471,7 +545,7 @@
         </div>
       </section>
 
-      <section id="os-concept" class="py-12">
+      <section id="os-concept" class="py-12" aria-label="Operating system concept section">
         <div class="mb-8">
           <p class="mb-2 text-sm font-medium uppercase tracking-[0.24em] text-emerald-300">Concept project</p>
           <h2 class="text-3xl font-black text-white">DevPulse OS Concept</h2>
@@ -556,7 +630,8 @@
                 <h3 class="mt-2 text-2xl font-bold text-white">Design goals</h3>
               </div>
               <div class="rounded-full border border-cyan-400/20 bg-cyan-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">
-                Safe</div>
+                Safe
+              </div>
             </div>
 
             <div class="space-y-4">
@@ -592,13 +667,13 @@
             </div>
 
             <div class="mt-5 rounded-2xl border border-emerald-400/20 bg-emerald-500/10 p-4 text-sm text-emerald-50">
-              Important: this is a product concept and interface prototype. A real Windows-compatible operating system requires deep kernel-level engineering, signed drivers, hardware compatibility work, and a full secure architecture beyond a static web page.
+              Important: this is a product concept and interface prototype. A real Windows-compatible operating system requires deep kernel-level engineering, signed drivers, hardware compatibility validation, and long-term product strategy.
             </div>
           </div>
         </div>
       </section>
 
-      <section id="profile" class="py-12">
+      <section id="profile" class="py-12" aria-label="Profile section">
         <div class="flex items-center justify-center">
           <div class="glass neon-border relative w-full max-w-lg overflow-hidden rounded-[28px] p-6 shadow-neon">
             <div class="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-cyan-500/10"></div>
@@ -645,7 +720,7 @@
                 href="https://www.instagram.com/abhimanu_011/"
                 target="_blank"
                 rel="noreferrer"
-                class="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-400 to-cyan-500 px-5 py-3 text-base font-bold text-slate-950 transition hover:scale-[1.01] hover:shadow-neon"
+                class="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-gradient-to-r from-emerald-400 to-cyan-500 px-5 py-3 text-base font-bold text-slate-950 transition hover:scale-[1.01]"
               >
                 Let's Connect
               </a>
@@ -687,6 +762,7 @@
         try {
           await navigator.clipboard.writeText(promptOutput.value);
           copyPromptBtn.textContent = "Copied";
+          copyPromptBtn.setAttribute("aria-live", "polite");
           setTimeout(() => {
             copyPromptBtn.textContent = "Copy Prompt";
           }, 1200);
@@ -747,9 +823,11 @@
       projectTags.forEach((tag) => {
         tag.addEventListener("click", () => {
           const filter = tag.dataset.filter;
+
           projectTags.forEach((item) => {
             const isActive = item === tag;
             item.classList.toggle("active", isActive);
+            item.setAttribute("aria-pressed", String(isActive));
             item.classList.toggle("border-cyan-400/30", isActive);
             item.classList.toggle("text-cyan-100", isActive);
             item.classList.toggle("bg-cyan-500/10", isActive);
