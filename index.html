@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DevPulse | AI Developer Portfolio</title>
+<meta name="description" content="DevPulse is an AI developer portfolio and tool hub for automation, AI agents and developer workflows.">
+<meta name="theme-color" content="#0A1F44">
+<meta property="og:title" content="DevPulse | AI Developer Portfolio">
+<meta property="og:description" content="AI agents, automation workflows and developer tools by Abhimanu Kumar.">
+<meta property="og:type" content="website">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A1F44; --ink-deep:#071530; --ink-up:#10295A;
+  --line:rgba(127,168,232,.28); --line-strong:rgba(234,241,255,.55);
+  --paper:#EAF1FF; --muted:#A9BEE6; --blue:#7FA8E8; --orange:#FF7A1A; --orange-ink:#1A0E00;
+  --display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --body:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{font-family:var(--body);background:var(--ink);color:var(--paper);line-height:1.6;font-size:17px;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:48px 48px;background-attachment:fixed;background-blend-mode:soft-light}
+body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 70% 0%,transparent,var(--ink) 75%);opacity:.85;pointer-events:none;z-index:-1}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--orange);color:var(--orange-ink);padding:8px 14px;z-index:99}
+.skip:focus{left:8px}
+
+/* nav */
+header{position:sticky;top:0;z-index:20;background:rgba(10,31,68,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line-strong)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:800;font-size:22px}
+.brand svg{width:34px;height:34px}
+nav ul{display:flex;gap:6px;list-style:none}
+nav a.l{display:block;padding:8px 14px;text-decoration:none;color:var(--muted);font-weight:500;border-bottom:2px solid transparent}
+nav a.l:hover,nav a.l.on{color:var(--paper);border-color:var(--orange)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;font:600 16px var(--body);text-decoration:none;cursor:pointer;border:2px solid var(--paper);background:transparent;color:var(--paper);transition:transform .15s,background .15s}
+.btn:hover{background:rgba(234,241,255,.1)}
+.btn:active{transform:translateY(1px)}
+.btn.pri{background:var(--orange);border-color:var(--orange);color:var(--orange-ink)}
+.btn.pri:hover{background:#ff8d38}
+.btn.sm{padding:8px 16px;font-size:15px}
+.menu{display:none}
+
+/* hero */
+.hero{padding:88px 0 72px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(46px,7vw,88px);line-height:.98;letter-spacing:-.03em}
+.sub{margin-top:24px;max-width:34em;color:var(--muted);font-size:19px}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.tag{display:inline-block;margin-bottom:22px;padding:5px 12px;border:1px solid var(--line-strong);color:var(--muted);font-size:14px}
+.stats{display:flex;gap:36px;margin-top:48px;flex-wrap:wrap}
+.stats b{display:block;font-family:var(--display);font-size:34px;line-height:1}
+.stats span{color:var(--muted);font-size:14px}
+
+/* title-block panel */
+.panel{border:2px solid var(--line-strong);background:rgba(7,21,48,.78);position:relative}
+.panel-h{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line-strong);font-weight:600}
+.live{display:inline-flex;align-items:center;gap:8px;color:var(--orange);font-size:14px}
+.live i{width:9px;height:9px;border-radius:50%;background:var(--orange);animation:blink 1.4s infinite}
+@keyframes blink{50%{opacity:.25}}
+.pulse-wrap{padding:8px 16px 0}
+.ecg{width:100%;height:120px;display:block}
+.ecg path{fill:none;stroke:var(--orange);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1200;stroke-dashoffset:1200;animation:draw 3.2s ease-out infinite}
+@keyframes draw{0%{stroke-dashoffset:1200}70%,100%{stroke-dashoffset:0}}
+.bars{padding:8px 16px 16px;display:grid;gap:12px}
+.bar-row{display:grid;grid-template-columns:130px 1fr 44px;gap:12px;align-items:center;font-size:15px}
+.track{height:10px;border:1px solid var(--line-strong)}
+.fill{height:100%;background:var(--blue);transition:width .8s}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line-strong)}
+.kpis div{padding:12px 16px;border-right:1px solid var(--line-strong)}
+.kpis div:last-child{border:0}
+.kpis b{display:block;font-family:var(--display);font-size:26px}
+.kpis span{font-size:13px;color:var(--muted)}
+
+/* sections */
+section{padding:84px 0;border-top:1px solid var(--line)}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(32px,4.5vw,52px);line-height:1.05;letter-spacing:-.02em;max-width:16em}
+.lead{margin-top:14px;color:var(--muted);max-width:38em}
+.sec-h{margin-bottom:40px}
+
+/* tools */
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.pb-body{padding:16px;display:grid;gap:14px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:7px 14px;border:1px solid var(--line-strong);background:transparent;color:var(--paper);font:500 15px var(--body);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+textarea{width:100%;min-height:170px;resize:vertical;background:var(--ink-deep);color:var(--paper);border:1px solid var(--line-strong);padding:14px;font:15px/1.6 var(--body)}
+.row{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.status{color:var(--blue);font-size:15px;min-height:1.4em}
+.console{background:var(--ink-deep);margin:16px;border:1px solid var(--line);padding:14px;font:14px/1.75 var(--mono);height:262px;overflow:hidden;color:var(--muted)}
+.console .t{color:var(--blue)} .console .ok{color:var(--orange)}
+
+/* projects */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.reg{border-top:2px solid var(--line-strong)}
+.item{display:grid;grid-template-columns:72px 1fr auto;gap:22px;align-items:center;padding:22px 0;border-bottom:1px solid var(--line)}
+.item[hidden]{display:none}
+.item svg{width:72px;height:72px;border:1px solid var(--line-strong);background:var(--ink-deep)}
+.item h3{font-family:var(--display);font-size:24px;font-weight:700;line-height:1.2}
+.item p{color:var(--muted);margin-top:4px;max-width:44em}
+.meta{text-align:right;font-size:14px;color:var(--muted);white-space:nowrap}
+.meta b{display:block;color:var(--paper);font-weight:600}
+.pills{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+.pills span{font-size:13px;padding:2px 10px;border:1px solid var(--line-strong);color:var(--blue)}
+
+/* OS */
+.note{margin-top:20px;border-left:4px solid var(--orange);padding:10px 16px;color:var(--muted);max-width:46em;background:rgba(255,122,26,.07)}
+.desk{margin-top:36px;border:2px solid var(--line-strong);background:var(--ink-deep);display:grid;grid-template-columns:96px 1fr;grid-template-rows:auto 1fr;min-height:420px}
+.topbar{grid-column:1/-1;display:flex;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--line-strong);font-weight:600}
+.dock{display:flex;flex-direction:column;gap:6px;padding:12px;border-right:1px solid var(--line-strong)}
+.app{background:none;border:1px solid transparent;color:var(--muted);padding:10px 4px;cursor:pointer;font:500 13px var(--body);display:grid;gap:4px;justify-items:center}
+.app svg{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:1.8}
+.app[aria-selected=true]{border-color:var(--orange);color:var(--paper)}
+.win{padding:24px;display:none}
+.win.on{display:block;animation:open .22s ease-out}
+@keyframes open{from{opacity:0;transform:scale(.98)}}
+.win h3{font-family:var(--display);font-size:26px;margin-bottom:12px}
+.win ul{margin:10px 0 0 20px;color:var(--muted)}
+.win code{font-family:var(--mono);font-size:14px;color:var(--orange)}
+.term{font:14px/1.8 var(--mono);color:var(--muted)}
+.files{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-top:12px}
+.files div{border:1px solid var(--line);padding:12px;font-size:14px}
+.sys{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:26px;border:1px solid var(--line-strong)}
+.sys div{padding:12px 16px;border-right:1px solid var(--line-strong)}
+.sys div:last-child{border:0}
+.sys b{display:block;font-family:var(--display);font-size:20px}
+.sys span{font-size:13px;color:var(--muted)}
+
+/* profile */
+.prof{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start}
+.avatar{width:150px;height:150px;border:2px solid var(--line-strong);display:grid;place-items:center;font:800 56px var(--display);background:var(--ink-up);position:relative}
+.avatar::after{content:"";position:absolute;right:-10px;bottom:-10px;width:26px;height:26px;background:var(--orange)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);margin:24px 0;border:1px solid var(--line-strong);max-width:640px}
+.facts div{padding:12px 16px;border-right:1px solid var(--line-strong)}
+.facts div:last-child{border:0}
+.facts span{display:block;font-size:13px;color:var(--muted)}
+.facts b{font-weight:600}
+footer{border-top:2px solid var(--line-strong);padding:28px 0;color:var(--muted);font-size:15px}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media(max-width:880px){
+  .hero-grid,.tools,.prof{grid-template-columns:1fr}
+  nav ul{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--ink);padding:12px 24px;border-bottom:1px solid var(--line-strong)}
+  nav ul.open{display:flex}
+  .menu{display:inline-flex}
+  .follow{display:none}
+  .item{grid-template-columns:56px 1fr}
+  .item svg{width:56px;height:56px}
+  .meta{grid-column:2;text-align:left}
+  .desk{grid-template-columns:1fr}
+  .dock{flex-direction:row;border-right:0;border-bottom:1px solid var(--line-strong);overflow-x:auto}
+  .topbar{grid-column:auto}
+  .facts,.sys{grid-template-columns:1fr}
+  .facts div,.sys div{border-right:0;border-bottom:1px solid var(--line-strong)}
+  .bar-row{grid-template-columns:100px 1fr 40px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .ecg path{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header>
+ <div class="wrap nav">
+  <a class="brand" href="#top" aria-label="DevPulse home">
+   <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" fill="#FF7A1A"/><path d="M6 34h14l5-14 8 28 6-22 4 8h15" fill="none" stroke="#1A0E00" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+   DevPulse
+  </a>
+  <nav aria-label="Main">
+   <ul id="links">
+    <li><a class="l" href="#tools">Tools</a></li>
+    <li><a class="l" href="#projects">Projects</a></li>
+    <li><a class="l" href="#os">DevPulse OS</a></li>
+    <li><a class="l" href="#profile">Profile</a></li>
+   </ul>
+  </nav>
+  <div class="row">
+   <a class="btn sm follow" href="https://www.instagram.com/abhimanu_011/" target="_blank" rel="noopener">Follow on Instagram</a>
+   <button class="btn sm menu" id="menu" aria-expanded="false" aria-controls="links">Menu</button>
+  </div>
+ </div>
+</header>
+
+<main id="main">
+<div id="top" class="hero">
+ <div class="wrap hero-grid">
+  <div>
+   <span class="tag">Demo concept: AI agents and software tools</span>
+   <h1>Build AI systems. Ship faster.</h1>
+   <p class="sub">I design software systems, AI automation workflows and developer tools that turn ideas into reliable products.</p>
+   <div class="cta">
+    <a class="btn pri" href="https://github.com/AbhimanuKD" target="_blank" rel="noopener">View GitHub</a>
+    <a class="btn" href="#os">Open DevPulse OS</a>
+   </div>
+   <div class="stats" id="stats">
+    <div><b>8+</b><span>Automation stacks</span></div>
+    <div><b>30+</b><span>Smart workflows</span></div>
+    <div><b>24/7</b><span>Agent mindset</span></div>
+   </div>
+  </div>
+
+  <div class="panel" aria-label="Agent pulse dashboard">
+   <div class="panel-h"><span>AI Agent Pulse</span><span class="live"><i></i>Live</span></div>
+   <div class="pulse-wrap">
+    <svg class="ecg" viewBox="0 0 520 120" preserveAspectRatio="none" aria-hidden="true">
+     <path d="M0 70H120L145 70 165 30 190 110 215 10 240 90 255 70H340L360 52 380 88 395 70H520"/>
+    </svg>
+   </div>
+   <div class="bars">
+    <div class="bar-row"><span>Context Engine</span><div class="track"><div class="fill" data-v="91" style="width:91%"></div></div><b>91%</b></div>
+    <div class="bar-row"><span>Automation Sync</span><div class="track"><div class="fill" data-v="88" style="width:88%"></div></div><b>88%</b></div>
+    <div class="bar-row"><span>Model Health</span><div class="track"><div class="fill" data-v="97" style="width:97%"></div></div><b>97%</b></div>
+   </div>
+   <div class="kpis">
+    <div><b>14</b><span>Agents</span></div>
+    <div><b>27</b><span>Flows</span></div>
+    <div><b>0.8s</b><span>Latency</span></div>
+   </div>
+  </div>
+ </div>
+</div>
+
+<section id="tools">
+ <div class="wrap">
+  <div class="sec-h">
+   <h2>AI agent workspace</h2>
+   <p class="lead">Pick a prompt, copy it, and watch the agent runtime log. Both tools run in your browser.</p>
+  </div>
+  <div class="tools">
+   <div class="panel">
+    <div class="panel-h"><span>Agent Prompt Builder</span><span class="live"><i></i>Ready</span></div>
+    <div class="pb-body">
+     <div class="chips" role="group" aria-label="Prompt type">
+      <button class="chip" aria-pressed="true" data-p="scraper">Web scraper</button>
+      <button class="chip" aria-pressed="false" data-p="optimizer">Code optimizer</button>
+      <button class="chip" aria-pressed="false" data-p="bot">Automation bot</button>
+     </div>
+     <label for="prompt" style="color:var(--muted);font-size:15px">Prompt (you can edit it)</label>
+     <textarea id="prompt"></textarea>
+     <div class="row"><button class="btn pri sm" id="copy">Copy prompt</button><span class="status" id="status" role="status"></span></div>
+    </div>
+   </div>
+   <div class="panel">
+    <div class="panel-h"><span>API Console Log</span><span class="live"><i></i>Streaming</span></div>
+    <div class="console" id="console" aria-live="off"></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="projects">
+ <div class="wrap">
+  <div class="sec-h">
+   <h2>Built for automation and product velocity</h2>
+   <p class="lead">Three concept projects and six areas of work. Filter the list by type.</p>
+  </div>
+  <div class="filters" role="group" aria-label="Filter projects">
+   <button class="chip" aria-pressed="true" data-f="all">All</button>
+   <button class="chip" aria-pressed="false" data-f="ai">AI</button>
+   <button class="chip" aria-pressed="false" data-f="tools">Tools</button>
+   <button class="chip" aria-pressed="false" data-f="systems">Systems</button>
+  </div>
+  <div class="reg" id="reg">
+   <article class="item" data-c="ai">
+    <svg viewBox="0 0 72 72" aria-hidden="true"><g fill="none" stroke="#7FA8E8" stroke-width="2"><circle cx="14" cy="18" r="5"/><circle cx="14" cy="54" r="5"/><circle cx="36" cy="36" r="7" stroke="#FF7A1A"/><circle cx="58" cy="18" r="5"/><circle cx="58" cy="54" r="5"/><path d="M19 20l11 12M19 52l11-12M42 32l12-11M42 40l12 11"/></g></svg>
+    <div><h3>Insight Agent</h3><p>A decision-support agent that turns scattered customer data into short strategy insights and summaries.</p><div class="pills"><span>LLM</span><span>RAG</span></div></div>
+    <div class="meta"><b>AI</b>2026</div>
+   </article>
+   <article class="item" data-c="tools">
+    <svg viewBox="0 0 72 72" aria-hidden="true"><g fill="none" stroke="#7FA8E8" stroke-width="2"><rect x="8" y="26" width="16" height="20"/><rect x="48" y="10" width="16" height="16"/><rect x="48" y="46" width="16" height="16"/><path d="M24 36h12M36 36V18h12M36 36v18h12" stroke="#FF7A1A"/></g></svg>
+    <div><h3>Workflow Orchestrator</h3><p>A developer automation hub for task routing, script runs, scheduling and status tracking.</p><div class="pills"><span>Node</span><span>API</span></div></div>
+    <div class="meta"><b>Tools</b>2025</div>
+   </article>
+   <article class="item" data-c="systems">
+    <svg viewBox="0 0 72 72" aria-hidden="true"><g fill="none" stroke="#7FA8E8" stroke-width="2"><path d="M8 62V10M8 62h58"/><path d="M14 48l14-10 10 6 14-20 10 8" stroke="#FF7A1A" stroke-width="3"/></g></svg>
+    <div><h3>Pulse Monitoring</h3><p>A system health dashboard for uptime, sync, queues and memory, built for product teams.</p><div class="pills"><span>Monitoring</span><span>Ops</span></div></div>
+    <div class="meta"><b>Systems</b>2024</div>
+   </article>
+   <article class="item" data-c="systems"><svg viewBox="0 0 72 72" aria-hidden="true"><g fill="none" stroke="#7FA8E8" stroke-width="2"><rect x="14" y="14" width="44" height="44"/><path d="M14 30h44M30 14v44"/></g></svg><div><h3>AI Agent Design</h3><p>Prompt orchestration, retrieval flows, tool planning and human-in-the-loop automation.</p></div><div class="meta"><b>Core</b></div></article>
+   <article class="item" data-c="tools"><svg viewBox="0 0 72 72" aria-hidden="true"><g fill="none" stroke="#7FA8E8" stroke-width="2"><circle cx="36" cy="36" r="10"/><path d="M36 10v10M36 52v10M10 36h10M52 36h10M18 18l7 7M47 47l7 7M54 18l-7 7M25 47l-7 7"/></g></svg><div><h3>Automation Systems</h3><p>Simple developer workflows, task automation and reusable tool chains.</p></div><div class="meta"><b>Build</b></div></article>
+   <article class="item" data-c="systems"><svg viewBox="0 0 72 72" aria-hidden="true"><g fill="none" stroke="#7FA8E8" stroke-width="2"><path d="M12 20l-6 16 6 16M60 20l6 16-6 16"/><path d="M42 14L30 58" stroke="#FF7A1A"/></g></svg><div><h3>Code Efficiency</h3><p>Refactoring structure, cutting complexity and speeding up releases.</p></div><div class="meta"><b>Optimize</b></div></article>
+   <article class="item" data-c="systems"><svg viewBox="0 0 72 72" aria-hidden="true"><g fill="none" stroke="#7FA8E8" stroke-width="2"><path d="M10 52L36 12l26 40z"/><path d="M36 12v40" stroke="#FF7A1A"/></g></svg><div><h3>Fast Delivery</h3><p>Short product cycles, quick iteration and production-ready standards.</p></div><div class="meta"><b>Ship</b></div></article>
+   <article class="item" data-c="ai"><svg viewBox="0 0 72 72" aria-hidden="true"><g fill="none" stroke="#7FA8E8" stroke-width="2"><rect x="10" y="14" width="52" height="38"/><path d="M18 26h20M18 34h32M18 42h14" stroke="#FF7A1A"/></g></svg><div><h3>Prompt Lab</h3><p>Write reusable prompts and tune them for clear, consistent results.</p></div><div class="meta"><b>AI</b></div></article>
+   <article class="item" data-c="tools"><svg viewBox="0 0 72 72" aria-hidden="true"><g fill="none" stroke="#7FA8E8" stroke-width="2"><rect x="12" y="12" width="48" height="12"/><rect x="12" y="30" width="48" height="12"/><rect x="12" y="48" width="48" height="12" stroke="#FF7A1A"/></g></svg><div><h3>Action Queue</h3><p>Run scripts, watch dependencies and track task status in one place.</p></div><div class="meta"><b>Ops</b></div></article>
+   <article class="item" data-c="ai"><svg viewBox="0 0 72 72" aria-hidden="true"><g fill="#7FA8E8"><circle cx="14" cy="50" r="3"/><circle cx="26" cy="36" r="3"/><circle cx="38" cy="42" r="3"/><circle cx="50" cy="24" r="3" fill="#FF7A1A"/><circle cx="60" cy="14" r="3"/></g></svg><div><h3>Signal Grid</h3><p>Collect, clean and score signals so systems make better decisions.</p></div><div class="meta"><b>Data</b></div></article>
+  </div>
+ </div>
+</section>
+
+<section id="os">
+ <div class="wrap">
+  <div class="sec-h">
+   <h2>DevPulse OS concept</h2>
+   <p class="lead">A secure, x64-focused desktop shell. Click an app in the dock to open it.</p>
+  </div>
+  <div class="desk">
+   <div class="topbar"><span>DevPulse OS</span><span id="clock">--:--</span></div>
+   <div class="dock" role="tablist" aria-label="Apps">
+    <button class="app" role="tab" aria-selected="true" data-w="browser"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>Browser</button>
+    <button class="app" role="tab" aria-selected="false" data-w="terminal"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14"/><path d="M7 10l3 2-3 2M12 15h4"/></svg>Terminal</button>
+    <button class="app" role="tab" aria-selected="false" data-w="files"><svg viewBox="0 0 24 24"><path d="M3 6h7l2 2h9v11H3z"/></svg>Files</button>
+    <button class="app" role="tab" aria-selected="false" data-w="agents"><svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11"/><path d="M12 8V4M9 13h.01M15 13h.01"/></svg>Agents</button>
+   </div>
+   <div>
+    <div class="win on" id="w-browser" role="tabpanel"><h3>Portfolio Browser</h3><p style="color:var(--muted)">devpulse.local/portfolio</p><ul><li>Build AI systems. Ship faster.</li><li>Prompt Lab, Action Queue and Signal Grid in one view</li></ul></div>
+    <div class="win" id="w-terminal" role="tabpanel"><h3>Terminal</h3><div class="term">$ devpulse status<br>kernel ........ x64<br>security ...... AES-256<br>updates ....... up to date<br>$ <span style="color:var(--orange)">_</span></div></div>
+    <div class="win" id="w-files" role="tabpanel"><h3>Files</h3><div class="files"><div>Desktop</div><div>Apps</div><div>Security</div><div>Updates</div><div>Projects</div><div>Prompts</div></div></div>
+    <div class="win" id="w-agents" role="tabpanel"><h3>Agents</h3><ul><li>14 agents running</li><li>27 flows scheduled</li><li>Average latency <code>0.8s</code></li></ul></div>
+   </div>
+  </div>
+  <div class="sys">
+   <div><b>Kernel: x64</b><span>64-bit architecture planning</span></div>
+   <div><b>Security: AES-256</b><span>Sandboxing concept</span></div>
+   <div><b>Support: App ready</b><span>App compatibility layer concept</span></div>
+  </div>
+  <p class="note">This is a product concept and interface prototype. A real Windows-compatible operating system needs deep kernel work, signed drivers, hardware testing and long-term product planning.</p>
+ </div>
+</section>
+
+<section id="profile">
+ <div class="wrap prof">
+  <div class="avatar" aria-hidden="true">AK</div>
+  <div>
+   <h2>Abhimanu Kumar</h2>
+   <p class="lead">Developer, AI agents and tool builder. I turn complex workflows into simple AI-powered tools.</p>
+   <div class="facts">
+    <div><span>Specialty</span><b>AI SaaS systems</b></div>
+    <div><span>Focus</span><b>Automation and UX</b></div>
+    <div><span>Location</span><b>India</b></div>
+   </div>
+   <div class="cta" style="margin-top:0">
+    <a class="btn pri" href="https://github.com/AbhimanuKD" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn" href="https://www.instagram.com/abhimanu_011/" target="_blank" rel="noopener">Instagram</a>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>&copy; 2026 DevPulse</span><span>Automating ideas into tools.</span></div></footer>
+
+<script>
+(function(){
+  var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+
+  /* mobile menu */
+  var menu=$('#menu'), links=$('#links');
+  menu.addEventListener('click',function(){var o=links.classList.toggle('open');menu.setAttribute('aria-expanded',o)});
+  links.addEventListener('click',function(e){if(e.target.tagName==='A'){links.classList.remove('open');menu.setAttribute('aria-expanded','false')}});
+
+  /* active nav link */
+  var secs=$$('section[id]');
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){$$('a.l').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(function(s){io.observe(s)});
+
+  /* prompt builder */
+  var P={
+    scraper:'You are an AI web scraper agent. Extract product data from the target listings, structure the output as JSON, and summarize key trends with a confidence score and any anomalies.',
+    optimizer:'You are a code optimizer agent. Review the code I give you, find slow or repeated logic, suggest a cleaner version, and explain each change in one sentence with the expected speed or readability gain.',
+    bot:'You are an automation bot. Take the task list I give you, group it into steps, decide which steps can run in parallel, write the script for each step, and report status after each one.'
+  };
+  var ta=$('#prompt'), status=$('#status'), t;
+  ta.value=P.scraper;
+  $$('[data-p]').forEach(function(b){b.addEventListener('click',function(){
+    $$('[data-p]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+    ta.value=P[b.dataset.p];
+  })});
+  $('#copy').addEventListener('click',function(){
+    var done=function(m){status.textContent=m;clearTimeout(t);t=setTimeout(function(){status.textContent=''},2200)};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(ta.value).then(function(){done('Prompt copied')},function(){ta.select();done('Press Ctrl+C to copy')})}
+    else{ta.select();done('Press Ctrl+C to copy')}
+  });
+
+  /* console log */
+  var cl=$('#console'), L=[
+    ['system','Initializing DevPulse agent runtime...'],
+    ['network','Opening secure connection to model gateway...'],
+    ['agent','Loading prompt context and vector memory...'],
+    ['agent','Planning tools: search, parse, summarize'],
+    ['queue','3 jobs queued, 0 failed'],
+    ['agent','Running flow 14 of 27'],
+    ['system','Health check passed','ok'],
+    ['network','Response received in 0.8s','ok']
+  ], idx=0;
+  function stamp(){var d=new Date();return d.toTimeString().slice(0,8)}
+  function addLine(){
+    var l=L[idx%L.length]; idx++;
+    var d=document.createElement('div');
+    d.innerHTML='<span class="t">'+stamp()+'</span> ['+l[0]+'] <span class="'+(l[2]||'')+'">'+l[1]+'</span>';
+    cl.appendChild(d);
+    while(cl.children.length>9)cl.removeChild(cl.firstChild);
+  }
+  addLine();addLine();addLine();
+  setInterval(addLine,1300);
+
+  /* metric jitter */
+  setInterval(function(){
+    $$('.fill').forEach(function(f){
+      var v=Math.max(80,Math.min(99,+f.dataset.v+Math.round((Math.random()-.5)*5)));
+      f.style.width=v+'%'; f.parentNode.nextElementSibling.textContent=v+'%';
+    });
+  },2400);
+
+  /* project filter */
+  $$('[data-f]').forEach(function(b){b.addEventListener('click',function(){
+    $$('[data-f]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+    var f=b.dataset.f;
+    $$('#reg .item').forEach(function(i){i.hidden=!(f==='all'||i.dataset.c===f)});
+  })});
+
+  /* OS apps */
+  $$('.app').forEach(function(a){a.addEventListener('click',function(){
+    $$('.app').forEach(function(x){x.setAttribute('aria-selected',x===a)});
+    $$('.win').forEach(function(w){w.classList.toggle('on',w.id==='w-'+a.dataset.w)});
+  })});
+  function clock(){var d=new Date();$('#clock').textContent=d.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'})}
+  clock();setInterval(clock,20000);
+})();
+</script>
+</body>
+</html>
