@@ -24,8 +24,13 @@ $(IMG): build/kernel.bin src/boot.asm
 run: $(IMG)
 	qemu-system-i386 -m 128 -drive format=raw,file=$(IMG)
 
+iso: $(IMG)
+	@mkdir -p iso
+	cp $(IMG) iso/boot.img && truncate -s 1474560 iso/boot.img
+	xorriso -as mkisofs -V DEVPULSE_OS -o devpulse-os-v1.iso -b boot.img iso
+
 run-terminal: $(IMG)
 	qemu-system-i386 -m 128 -drive format=raw,file=$(IMG) -nographic
 
 clean:
-	rm -rf build $(IMG)
+	rm -rf build iso $(IMG) devpulse-os-v1.iso
