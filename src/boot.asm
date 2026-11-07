@@ -14,9 +14,15 @@ start:
     mov [bootdrive], dl
 
     ; ---- find out how much RAM we have (saved at 0x500, in KB) ----
+    ; E801 reports the same values in AX/BX or, on some BIOSes, CX/DX.
     mov ax, 0xE801
     int 0x15
     jc .old
+    test ax, ax
+    jnz .e801
+    mov ax, cx
+    mov bx, dx
+.e801:
     test ax, ax
     jz .old
     movzx eax, ax            ; KB between 1 MB and 16 MB
@@ -28,8 +34,12 @@ start:
 .old:
     mov ah, 0x88
     int 0x15
+    jc .unknown
     movzx eax, ax
     add eax, 1024
+    jmp .store
+.unknown:
+    xor eax, eax             ; report unknown RAM as 0, not garbage
 .store:
     mov [0x500], eax
 
